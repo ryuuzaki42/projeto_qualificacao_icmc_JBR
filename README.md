@@ -1,8 +1,6 @@
 **# README #**
 
-**Dissertação de mestrado ICMC - USP - João Batista**
-
-![2.png](https://bitbucket.org/repo/ee7aLy/images/2914171540-2.png)
+**Dissertação de mestrado [ICMC USP](http://www.icmc.usp.br/) - João Batista**
 
 **Informações para o depósito:**
 
