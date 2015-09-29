@@ -1,0 +1,596 @@
+% ------------------------------------------------------------------------
+% ------------------------------------------------------------------------
+% ICMC: Modelo de Trabalho Acadêmico (tese de doutorado, dissertação de
+% mestrado e trabalhos monográficos em geral) em conformidade com 
+% ABNT NBR 14724:2011: Informação e documentação - Trabalhos acadêmicos -
+% Apresentação
+% ------------------------------------------------------------------------
+% ------------------------------------------------------------------------
+
+% Opções: 
+%   Qualificação         = qualificacao 
+%   Curso                = doutorado/mestrado
+%   Situação do trabalho = pre-defesa/pos-defesa (exceto para qualificação)
+% -- opções do pacote babel --
+% Idioma padrão = brazil
+	%spanish,			% idioma adicional para hifenização
+	%english,			% idioma adicional para hifenização
+	%brazil				% o último idioma é o principal do documento
+%\documentclass[mestrado, pos-defesa, spanish, english, brazil]{packages/icmc}
+\documentclass[mestrado, pre-defesa, english, brazil]{packages/icmc}
+
+%%%%%%%%%%
+
+\usepackage[utf8]{inputenc} % codificação de entrada e fontes
+\usepackage[T1]{fontenc}
+%\usepackage[pdftex]{color,graphicx} %incluir gráficos
+\usepackage{multirow}%tabela partida em duas
+\usepackage{indentfirst} % Indenta o primeiro parágrafo de cada seção.
+\usepackage{microtype} % melhor o espaço entre as palavras
+
+%%%%%%%%%%
+
+% ---
+% Pacotes Opcionais
+% ---
+\usepackage{rotating}           % Usado para rotacionar o texto
+\usepackage[all,knot,arc,import,poly]{xy}   % Pacote para desenhos gráficos
+% Este pacote pode conflitar com outros pacotes gráficos como o ``pictex''
+% Então é necessário usar apenas um dos pacotes conflitantes
+
+\newcommand{\VerbL}{0.52\textwidth}
+\newcommand{\LatL}{0.42\textwidth}
+
+
+% ---
+% Informações de dados para CAPA e FOLHA DE ROSTO
+% ---
+% Tanto na capa quanto nas folhas de rosto apenas a primeira letra da primeira palavra (ou nomes próprios) devem estar em letra maiúscula, todas as demais devem ser em letra minúscula.
+\tituloPT{Avaliação de hábitos de mobilidade veicular para otimizar o encaminhamento de mensagens oportunistas em VANETs}
+\tituloEN{Vehicular mobility habits evaluation to optimize message routing opportunists in VANETs}
+\autor[Ribeiro, J. B.]{João Batista Ribeiro}
+\genero{M} % Gênero do autor (M = Masculino / F = Feminino)
+\orientador[Orientador]{Prof. Dr.}{Edson dos Santos Moreira}
+%\coorientador{Prof. Dr.}{Fulano de Tal}
+\curso{CCMC}
+\data{20}{2}{2016} % Data do depósito
+% ---
+
+% ---
+% RESUMOS
+% ---
+
+% Resumo em PORTUGUÊS
+% conter no máximo 500 palavras
+% conter no mínimo 1 e no máximo 5 palavras-chave
+\textoresumo[brazil]{
+    A quantidade de veículos aumenta a cada dia e aliada com a falta de infraestrutura necessária, torna a situação do trânsito mundial ainda mais caótica e perigosa. Esse cenário pode ser melhorado com as VANETs (\textit{Vehicular Ad hoc NETworks}) que, aliadas aos Sistemas de Transporte Inteligente, tem o objetivo de melhorar a eficiência, a segurança e o conforto dos passageiros nos sistemas de transporte. Para tal, as VANETs utilizam interfaces de comunicação sem fio e sensores implantados nos veículos. Os veículos pertencentes a uma VANET podem se comunicar entre si ou com uma infraestrutura, que é assumida a ser localizada na margem da estrada. A comunicação nas VANETs é feita por meio de encontros oportunistas, assim uma mensagem pode passar por um ou vários nós intermediários até chegar ao nó de destino. Para rotear estas mensagens, foram desenvolvidos alguns protocolos. Neste projeto esperamos classificar os veículos em categorias em função dos seus hábitos de mobilidade e assim criar uma maneira de se inferir o padrão de mobilidade dos veículos de forma prática. Em sequência incorporá-la em algum protocolo de roteamento, assim como seus hábitos de mobilidade, com o intuito de melhorar o encaminhamento de mensagens nas VANETs. Os resultados serão validados por meio de simulações.
+    }{Vehicular Ad hoc Networks, Encaminhamento de Mensagens, Redes Oportunistas, Sistemas de Transporte Inteligente}
+
+
+% resumo em INGLÊS
+% conter no máximo 500 palavras
+% conter no mínimo 1 e no máximo 5 palavras-chave
+\textoresumo[english]{
+    The number of vehicles is increasing daily and combined with the lack of necessary infrastructure, makes the situation of the global traffic even more chaotic and dangerous. This scenario can be improved with VANETs (Vehicular Ad hoc Networks) which, combined with the Intelligent Transport Systems, aims to improve the efficiency, safety and passenger comfort in transport systems. To this end, VANETs use wireless communication interfaces and sensors deployed in vehicles. Vehicles belonging to a VANET can communicate with each other or with an infrastructure, which is assumed to be located on the side of the road. The communication in VANETs is made through opportunistic encounters, so a message can pass through one or more intermediate nodes until you reach your destination. To route these messages were developed some algorithms. In this project we hope to classify vehicles into categories according to their mobility habits and thus create a way to infer the pattern of mobility of practical vehicles. In consequently insert a routing algorithm classification of vehicles, as well as their mobility habits, in order to improve the routing of messages in VANETs. The results will be validated by simulations.
+    }{Vehicular Ad hoc Networks, Message Forwarding, Opportunistic Networks, Intelligent Transportation Systems}
+    
+% ---
+% Configurações de aparência do PDF final
+% ---
+% alterando o aspecto da cor azul
+\definecolor{blue}{RGB}{41,5,195}
+
+% informações do PDF
+\makeatletter
+\hypersetup{
+     	pagebackref=true,
+		pdftitle={\@title}, 
+		pdfauthor={\@author},
+    	pdfsubject={\imprimirpreambulo},
+	    pdfcreator={LaTeX with abnTeX2/ICMC-USP},
+		pdfkeywords={\palavraschave},
+		%%%% comentado na minha versão
+		colorlinks=true,       		% false: boxed links; true: colored links
+    	linkcolor=blue,          	% color of internal links
+    	citecolor=blue,        		% color of links to bibliography
+    	filecolor=magenta,      	% color of file links
+		urlcolor=blue,
+		bookmarksdepth=4
+		%%%% adicionado na minha versão
+        pdfkeywords={Vehicular Ad hoc Networks, Message Forwarding, Opportunistic Networks, Intelligent Transportation Systems.}, 
+        pdfproducer={Slackware with Latex and abnTeX2},
+        pdfstartview={FitH},
+        bookmarksopen=true,
+        unicode=true,
+        pdfborder={0 0 0}
+}
+\makeatother
+% --- 
+
+% ----------------------------------------------------------
+% ELEMENTOS PRÉ-TEXTUAIS
+% ----------------------------------------------------------
+
+% Inserir a ficha catalográfica
+%\incluifichacatalografica*{tex/fichaCatalografica.pdf}
+%\incluifichacatalografica{634} % Código Cutter: número atribuído ao sobrenome do autor. Para obtê-lo, consulte a tabela Cutter Sanborn (em http://www.davignon.qc.ca/cutter1.html), procure pelo sobrenome ou forma mais próxima ao sobrenome completo e coloque o número indicado como parâmetro.
+\incluifichacatalografica{484}
+
+% DEDICATÓRIA / AGRADECIMENTO / EPÍGRAFE
+%\textodedicatoria*{tex/pre-textual/dedicatoria}
+%\textoagradecimentos*{tex/pre-textual/agradecimentos}
+%\textoepigrafe*{tex/pre-textual/epigrafe}
+
+% Inclui a lista de figuras
+\incluilistadefiguras
+
+% Inclui a lista de tabelas
+\incluilistadetabelas
+
+% Inclui a lista de quadros
+%\incluilistadequadros
+
+% Inclui a lista de algoritmos
+%\incluilistadealgoritmos
+
+% Inclui a lista de códigos
+%\incluilistadecodigos
+
+% Inclui a lista de siglas e abreviaturas
+\incluilistadesiglas
+
+% Inclui a lista de símbolos
+%\incluilistadesimbolos
+
+% ----
+% Início do documento
+% ----
+\begin{document}
+% ----------------------------------------------------------
+% ELEMENTOS TEXTUAIS
+% ----------------------------------------------------------
+\textual
+
+%\chapter{Introdução}
+%\label{chapter:introducao}
+%\input{tex/introducao}
+%
+%\chapter{Instalando o abnTeX2}
+%\label{chapter:instalando-abntex}
+%\input{tex/instalando-abntex}
+%
+%\chapter{Orientações gerais}
+%\label{chapter:orientacoes-gerais}
+%\input{tex/orientacoes-gerais}
+%
+%\chapter{Configuração dos elementos pré-textuais}
+%\label{chapter:config-pre-textual}
+%\input{tex/config-pre-textual}
+%
+%\chapter{Corpos flutuantes}
+%\label{chapter:corpos-flutuantes}
+%\input{tex/corpos-flutuantes}
+%
+%\chapter{Listas}
+%\label{chapter:listas}
+%\input{tex/listas}
+%
+%\chapter{Ferramentas úteis}
+%\label{chapter:ferramentas-uteis}
+%\input{tex/ferramentas-uteis}
+%
+%\chapter{Citações e referências}
+%\label{chapter:citacoes}
+%\input{tex/citacoes}
+
+\chapter{Introdução} \label{intro}
+
+Atualmente as atividades de trânsito, o transporte de mercadorias e de passageiros, são importantes no dia a dia das pessoas e são essenciais para o desenvolvimento humano. Na execução destas atividades, a direção é um dos fatores mais agravantes com a segurança no trânsito. Assim é importante um meio que ofereça suporte ao motorista e propicie uma maior segurança nas rodovias \cite{Fuentes-2011}.
+
+Nesse contexto surgiram as \textit{Vehicular Ad hoc NETworks} (VANETs), um tipo específico de rede \textit{ad hoc} que tem por objetivo dar suporte ao motorista aumentando a segurança, o conforto e a eficiência no trânsito. Veículos pertencentes a uma VANET podem se comunicar entre si ou com equipamentos na margem da estrada e assim trocar dados ou informações \cite{chen-2010}.
+
+A infraestrutura de transporte está saturada devido ao crescente número de veículos, o que resulta em vários problemas (e.g., congestionamentos). Problemas que motivaram pesquisas na área de Sistemas de Transporte Inteligente (\textit{Intelligent Transportation Systems} - ITS). Os ITS em conjuntos com as VANETs buscam otimizar o sistema de transporte, para tal utilizam das redes de comunicação \cite{Figueiredo-2001}. Para comunicar-se no ambiente das VANETs é necessário lidar com os problemas da conexão intermitente e com o pouco tempo dentro da área de comunicação com outros veículos, fatores que podem comprometer a eficiência da comunicação \cite{Rubinstein-2009}.
+
+A partir da comunicação nas VANETs foi possível criar aplicações, que podem ser divididas em duas categorias: aplicações de segurança (\textit{safety applications}), que tem por objetivo propiciar uma maior segurança no trânsito e as aplicações de gerenciamento do tráfego e entretenimento (\textit{non-safety applications}), que tem por objetivo disponibilizar informações do trânsito e propiciar um maior conforto durante a viagem \cite{Soomro-2010}.
+
+Muitas aplicações em VANETs tem por base o \textit{Beaconing}, sendo definido pelo o envio de \textit{beacons} periodicamente. \textit{Beaconing} é uma forma de comunicação utilizada para enviar informações de estado (\textit{status}) do veículo e curtas mensagens \cite{noori-2013,Nguyen-2002}.
+
+Para avaliar o desempenho de novos protocolos, aplicações e arquiteturas é necessário a execução de experimentos. No ambiente das VANETs, a execução de experimentos no mundo real geralmente são difíceis e podem ter um alto custo envolvido. Nesse âmbito a simulação é um método eficaz, por possibilitar a avaliação de desempenho de maneira mais fácil e barata através de um ambiente simulado. Entretanto, é importante o uso de um modelo de mobilidade realista, para que assim os resultados da avaliação façam uma previsão precisa de como será o desempenho no mundo real \cite{Mahajan-2006,Saha-2004}.
+
+Na literatura existe uma variedade de protocolos de roteamento para VANETs, sendo separados por paradigmas utilizados e geralmente para um cenário específico. Os protocolos devem ser robustos ao ponto de conseguir lidar com a alta mobilidade dos veículos e conseguir enviar e receber de mensagens entre os veículos e a infraestrutura na margem da estrada \cite{Alves-2009}. Uma abordagem para o roteamento das mensagens utiliza os encontros (encontros oportunistas) entre veículos para transmitir as mensagens. Ao enviar uma mensagem esses protocolos é necessário decidir para qual veículo enviar a mensagem e assim decidir se determinado veículo é um bom nó para conduzir determinada mensagem, para isto levam em conta a mobilidade dos veículos \cite{costa-2013}.
+
+Com a crescente quantidade de veículos nas rodovias é necessário um método de se inferir o padrão de mobilidade dos veículos de modo rápido para tomada de decisão sobre o encaminhamento da mensagens. Nesse âmbito propomos a classificação dos veículos em categorias e a incorporação destas categorias em algum protocolos de roteamento com o intuito de otimizar o encaminhamento de mensagens em VANETs.
+
+O restante deste documento está organizado da seguinte forma: A \autoref{objetivos} descreve os objetivos do trabalho e a \autoref{motivacao} a motivação; o \autoref{fundamentos} discorre sobre os conceitos das VANETs e afins; o \autoref{trab. rela.} apresenta os trabalhos relacionados; e por fim o \autoref{metodologia} apresenta as atividades e o cronograma da proposta de trabalho deste projeto.
+
+\section{Objetivos} \label{objetivos}
+
+O objetivo geral deste projeto é otimizar o roteamento ou o encaminhamento de mensagens utilizando a classificação dos veículos em categorias para implementação de serviços \textit{non-safety}. Os principais resultados esperados deste projeto:
+
+\begin{itemize}
+	\item classificação dos veículos em categorias para tomada de decisão no encaminhamento de mensagens;
+	\item Otimizar o encaminhamento de informações no modelo de comunicação veículo com veículo;
+	\item criação de cenários, em um ambiente de simulação, para validação dos resultados.
+\end{itemize}
+
+\section{Motivação} \label{motivacao}
+
+A cada dia aumenta a quantidade de veículos em circulação, fato que pode agravar a caótica situação do trânsito mundial. Entretanto, uma maior quantidade de veículos aumentará a probabilidade de encontros oportunistas e assim as chances de comunicação entre os veículos. Nesse cenário de dezenas ou centenas de veículos em um mesmo local, é necessário um modo rápido de se inferir o padrão de mobilidade dos veículos para ser utilizado na tomada de decisão sobre o encaminhamento de mensagens. Nesse âmbito a classificação de veículos em função dos seus hábitos de mobilidade pode ser uma maneira prática de se inferir o padrão de mobilidade de determinado veículo. Quando for necessário saber o padrão de mobilidade de algum veículo terá apenas que verificar a qual categoria ele pertence. A classificação pode ser utilizada na tomada de decisão se determinado veículo é um bom nó para conduzir determinada mensagem. Também pode ser utilizada para criar mensagens para determinados grupos. Cada grupo sendo composto por uma ou mais categorias. No momento que um veículo receber uma mensagem, ele verifica para quais categorias ela é destinada, se a dele estiver presente, processará a mensagem, caso contrário a descarta, economizando em processamento. Essa classificação será enviada dentro dos \textit{beacons} e incorporada em algum protocolo de roteamento com objetivo de melhorar o encaminhamento de mensagem.
+
+\chapter{Fundamentos} \label{fundamentos}
+
+Neste capítulo é apresentado o embasamento teórico obtido a partir de uma pesquisa bibliográfica.
+
+\section{Rede tolerante a atrasos} \label{dtn}
+
+Em uma \sigla{DTN}{\textit{Delay Tolerant Network}}, os nós estão conectados de forma intermitente e novos nós de conexão são, em sua maioria, desconhecidos. Um caminho conectando a origem ao destino (fim a fim) é pouco provável que exista. As DTNs são redes sem fios, com alta mobilidade e baixa densidade de nós, o que torna o roteamento nestas redes um problema desafiador. Elas utilizam a estratégia \textit{store-carry-and-forward} para o roteamento das mensagens \cite{Jain-2004, Bulut-2010}.
+
+Na estratégia \textit{store-carry-and-forward} a informação passa por nós intermediários até chegar ao seu destino. Nela o nó armazena a mensagem que for enviar ou que tiver recebido em um \textit{buffer}, ao encontrar com outro nó, avalia se ele é um bom nó para conduzir essa mensagem, se sim, transfere a mensagem para ele. Esse processo se repete até a mensagem chegar ao seu destino ou seu tempo de vida expirar. Se não existir nenhum nó para transmitir a mensagem, ela é armazenada até uma oportunidade de transmissão. A mensagem é armazenada enquanto seu tempo de vida não expirar. Com o advento das DTNs, a estratégia \textit{store-carry-and-forward} tem sido amplamente aplicada para o roteamento de mensagens. \cite{Bulut-2010}.
+
+A ideia inicial das redes tolerantes a atrasos foi motivada pela proposta de desenvolver uma \sigla{IPN}{\textit{Interplanetary} Internet} e melhorar a comunicação interplanetária. A arquitetura foi desenvolvida de modo que pudesse trabalhar com atrasos e pacotes corrompidos, o que ocorria nas comunicações no espaço. Os conceitos da IPN foram adaptados para redes terrestres, motivado pelo pobre desempenho de algumas redes da época (2002), criando assim o termo \textit{Delay Tolerant Network} \cite{Fall-2003,Pond-2013}.
+
+As DTNs passaram a ser utilizadas em locais de conexão ruim, com longas taxas de erros e atrasos, propiciando assim o conceito de redes oportunistas. Nesse cenário, a arquitetura de rede TCP/IP \footnote{\textit{Transmission Control Protocol} / Internet \textit{Protocol}}, comumente utilizada na Internet, não é a ideal, devido as etapas do seu protocolo de comunicação, o TCP. O TCP é um protocolo orientado a conexão, que utiliza mensagens de confirmação para estabelecer a conexão, transmitir os dados e encerrar a conexão. Assim o TCP utiliza muitos recursos da rede e gasta um tempo não disponível para os cenários de redes com atrasos e desconexões frequentes \cite{Tanenbaum-2011,Pond-2013,Fall-2003}.
+
+\section{Redes oportunistas} \label{opotunismo}
+
+Usuários da rede mundial de computadores, com inclusão de dispositivos da computação ubíqua buscam estar conectados a todo momento. Em função da mobilidade, esses usuários podem experimentar momentos de falta de cobertura pelas redes. Desse modo, a conexão em conjunto com a mobilidade é de suma importância para esses usuários. A intermitência da conexão é um problema desafiador \cite{Sastry-2009,Sastry-2011,Hui-2005}.
+
+A maioria dos dispositivos móveis atualmente são equipados com Wi-Fi, \textit{Bluetooth}, sensores e outros componentes. Além disto, a maioria dos veículos modernos têm instalado interfaces de comunicação sem fio e vários sensores. O uso generalizado desses dispositivos e veículos cria um grande número de oportunidades de encontros, chamados de encontros oportunistas. As redes oportunistas aproveitam desses encontros oportunistas para efetuar a troca de mensagens. A mobilidade dos nós é o fator chave nas comunicações oportunistas \cite{Khalid-2012}.
+
+Nas redes com infraestrutura, os usuários podem, em função da mobilidade, experimentar momentos de falta de cobertura pelas redes, definido por ilhas de conexão (e.g., Wi-Fi de ``casa'' e do ``trabalho''). Esse problema motivou pesquisas por tecnologias alternativas, mas apesar dos esforços, a população ainda sofre com falta de conexão com a Internet. Para esse cenário, as redes oportunistas são uma tecnologia promissora, onde a informação passa por nós intermediários até chegar ao seu destino, estratégia \textit{store-carry-and-forward} \cite{Pond-2013}.
+
+Nos encontros oportunistas, os dispositivos trocam dados utilizando protocolos de curto alcance a fim de alcançar o destino desejado. Assim, o caminho da origem ao destino é construído ao longo do tempo e consiste de uma cadeia de nós intermediários. Tais nós transportam altruisticamente dados ou mensagens do remetente em vários momentos antes do destino recebê-los \cite{Sastry-2011}.
+
+\begin{figure}[!htbp]
+	\centering
+	\caption{\label{fig:rote_oport} Ilustração do roteamento oportunista}
+	\includegraphics[width=16cm]{img/roteamento.jpeg}
+	\legend{Fonte: \cite{Vahdat-2000}}
+\end{figure}
+
+O roteamento de mensagens aproveitando-se dos encontros oportunistas é definido como roteamento oportunista, representado na (\autoref{fig:rote_oport}). Na \autoref{fig:rote_oport} (a), um nó fonte $S$ deseja enviar uma mensagem para um nó de destino $D$, entretanto não existe nenhum caminho disponível (i.e., conectividade fim a fim de $S$ para $D$). Assim $S$ transmite sua mensagem para seus dois vizinhos, $C1$ e $C2$, em área de comunicação direta. Algum tempo depois, \autoref{fig:rote_oport} (b), $C2$ entra em alcance de comunicação direta com o nó $C3$ e transmite a mensagem para ele. Por fim, $C3$ tem alcance direto com $D$ e, finalmente, envia a mensagem para o seu destino $D$ \cite{Vahdat-2000}.
+
+\section{Sistemas de transporte inteligente} \label{its}
+
+Atualmente a infraestrutura de transporte está saturada, devido ao crescente número de veículos nas últimas cinco décadas, principalmente em áreas urbanas. Acarretando em congestionamentos, acidentes, atrasos no transporte e uma grande quantidade de emissão de poluentes. Esses problemas motivaram pesquisas na área de Sistemas de Transporte Inteligente, do inglês \sigla{ITS}{\textit{Intelligent Transportation Systems}} \cite{Figueiredo-2004}.
+
+Os ITS utilizam a comunicação, os sistemas de informação, o sensoriamento, o processamento de sinais e a tecnologia eletrônica de modo a resolver problemas de transporte (e.g., congestionamentos, falta segurança e pouca eficiência do transporte). Assim tem por objetivo proporcionar segurança, conforto aos passageiros e aumentar a eficiência do tráfego \cite{Figueiredo-2001}.
+
+Os ITS promovem comunicação entre usuário oferecendo condições necessárias para atender aplicações com diferentes requisitos. Um conjunto destas aplicações consiste em um Sistema Inteligente de Transporte, onde seus usuários estão dentro de veículos. O monitoramento cooperativo do tráfego e prevenção de colisões são exemplos destas aplicações \cite{Alves-2009}.
+
+A comunicação entre veículos foi denominada de redes veiculares. Nelas existem as partes sem infraestrutura (\textit{ad hoc}) e com infraestrutura. No início, o termo \textit{Vehicular ad hoc networks} foi criado para se referir apenas a parte \textit{ad hoc}, mas atualmente pesquisadores utilizam este termo para se referir a redes veiculares de modo geral \cite{Yokoyama-2014,Alves-2009,junior-2013}.
+
+\section{Vehicular ad hoc networks} \label{VANETs}
+
+A incorporação de tecnologias ubíquas e interfaces de comunicação sem fio em veículos concedeu-lhes a capacidade de se comunicar entre si e com o ambiente em que estão inseridos, o que se convencionou chamar de \sigla{VAN}{\textit{Vehicle Area Network}}. O alcance da comunicação de uma VAN está delimitado a uma certa distância em torno de um veículo que está em movimento. Os dispositivos que estão sobre a cobertura de uma VAN podem estabelecer uma comunicação a fim transmitir dados a qualquer outro dispositivo integrante da rede \cite{Faezipour-2012}.
+
+Nesse contexto está inserido um tipo específico de rede \textit{ad hoc}, as \sigla{VANETs}{\textit{Vehicular Ad hoc NETworks}}. As VANETs são uma subclasse das \sigla{MANETs}{\textit{Mobile Ad hoc NETworks}}, que trocam informações aproveitando os encontros oportunistas (redes oportunistas). O objetivo das VANETs é dar suporte ao motorista, aumentando a segurança no trânsito, o conforto aos passageiros e a eficiência do tráfego \cite{Fuentes-2011}.
+
+Os veículos pertencentes a uma VANET podem se comunicar diretamente entre si, em um modelo veículo com veículo, \sigla{V2V}{\textit{Vehicle-to-Vehicle}}, ou com equipamentos fixos na margem da estrada, \sigla{V2I}{\textit{Vehicle-to-Infrastructure}}, para obter algum serviço ou informação. Tais equipamentos, denominados \sigla{RSU}{\textit{Road Side Unit}}, são localizados ao longo das estradas e são \textit{gateways} entre a infraestrutura e os veículos e vice-versa. As RSUs também podem se comunicar entre si, \sigla{I2I}{\textit{Infrastructure-to-Infrastructure}}, para aprimoramento do controle de sinal. Promover uma comunicação sem fio eficiente para esses modelos é um desafio e uma questão essencial para com os Sistemas de Transporte Inteligente \cite{Faezipour-2012,tangade-2013, Kishimoto-2014}.
+
+Nas VANETs, os veículos são equipados com três dispositivos distintos (\autoref{fig:vanet_car}). Em primeiro lugar são equipados com uma unidade de comunicação \sigla{OBU}{\textit{On-Board Unit}}, que permite a comunicação V2V e V2I. Segundo, um conjunto de sensores (\textit{sensors}) para mensurar o seu próprio estado (e.g., consumo de combustível) e o ambiente (e.g., estrada escorregadia). Esses dados sensoriais podem ser compartilhados com outros veículos de modo a aumentar a consciência na rodovia e assim melhorar a segurança no trânsito. Por fim, um \sigla{TPM}{\textit{Trusted Platform Module}}, dispositivo que oferece armazenamento e computação confiável para os outros dispositivos \cite{Fuentes-2011}.
+
+\begin{figure}[!htbp]
+	\centering
+	\caption{\label{fig:vanet_car}VANET - modelo simplificado}
+	\includegraphics[width=14cm]{img/vanet-car.jpeg}
+	\legend{Fonte: \cite{Fuentes-2011}}
+\end{figure}
+
+Os fabricantes (\textit{Manufacturers}) são considerados dentro do modelo VANET, por identificarem exclusivamente cada veículo. A autoridade legal (\textit{Legal Authority}) é relacionada a duas tarefas principais, registro de veículos e relatórios de multas. Já os \sigla{TTPs}{\textit{Trusted Third Parties}} oferecem diversos serviços como gerenciamento de credenciais e \textit{timestamping}. Os fabricantes e as autoridades legais estão relacionados com os TTPs por eventualmente precisarem de seus serviços (e.g., para a emissão de credenciais eletrônicas). Os prestadores de serviços (\textit{Service Providers}) oferecem serviços que podem ser acessados através da rede (e.g., serviços baseados em localização) \cite{Fuentes-2011}.
+
+A informação contextual, obtida através dos sensores, pode ser utilizada para melhorar a comunicação e, consequentemente, a qualidade da experiência que os utilizadores podem ter a partir da infraestrutura existente na \sigla{NGN}{\textit{Next Generation Network}}. Uma NGN é essencialmente uma rede baseada em IP que permite que qualquer categoria de clientes receba uma ampla gama de serviços, tais como voz, dados e vídeo através da mesma rede \cite{Dharwadkar-2007}.
+
+O intercâmbio da informação contextual ou dados contextuais demonstra um alto potencial de tornar o sistema de transporte mais seguro (e.g., um assistente do motorista que ajuda na prevenção de acidentes), além de propiciar a troca de informações sobre serviços de pontos de interesse (e.g., receber ofertas de restaurantes que estão ao longo do caminho) \cite{Conti-2010,Mapp-2009}.
+
+Existem algumas questões relacionadas com a troca de dados nas VANETs que ainda carecem de respostas. É necessário, por exemplo, investigar o que um veículo deve transmitir durante os encontros, como compartilhar informações de forma adaptativa e personalizada para usuários específicos, e como embalar os dados para promover a transmissão de forma eficiente, uma vez que os veículos têm pouco tempo dentro da área de comunicação \cite{Faezipour-2012}.
+
+As VANETs têm outras características limitantes, como a velocidade do tráfego, bem como a forma de deslocamento dos veículos, o que pode comprometer a eficácia e a eficiência da comunicação \cite{Rubinstein-2009}. Com tantas informações sendo transmitidas pelas VANETs, também é necessário ter segurança e privacidade durante a comunicação, um cenário amplo de pesquisas \cite{Fuentes-2011}.
+
+\subsection{Dedicated short range communications} \label{dsrc}
+%\textcolor{red}{Titulo Dedicated short range communications ou Padrões de comunicação veicular?}
+
+O \sigla{DSRC}{\textit{Dedicated Short Range Communications}} foi desenvolvido para suportar uma variedade de aplicações baseadas na comunicação veicular. O DSRC é um canal de comunicação sem fio de curto alcance projetado especificamente para uso automotivo, com um conjunto correspondente de protocolos e padrões. Tais padrões buscam a interoperabilidade entre dispositivos de diferentes fabricantes. O  DSRC foi desenvolvimento inicialmente para aplicações de prevenção de colisão, aplicações que necessitam trocar dados frequentemente entre os veículos e a infraestrutura rodoviária (RSU) \cite{kenney-2011,Alves-2009}.
+
+Em 1999, a FCC (\textit{Federal Communications Commission}), com um dos primeiros esforços para padronização das redes veiculares nos Estados Unidos, alocou 75 MHz do espectro de frequências na faixa de 5,9 GHz (5,850-5,925 GHz) para aplicações DSRC (\autoref{fig:canais_dsrc}). A faixa é livre, porém licenciada, ou seja, não é cobrado uma taxa pela utilização, mas definem quais as aplicações e tecnologias a serem utilizadas. Em outros países foram definidas outras faixas de frequência \cite{Alves-2009,li-2012,kenney-2011}.
+
+O DSRC foi projetado em um sistema multicanal, com espectro de frequência dividido em sete canais (\autoref{fig:canais_dsrc}). Cada canal tem a largura de banda de 10 MHz, seis deles são definidos como \sigla{SCH}{\textit{Service Channel}} e um como \sigla{CCH}{\textit{Control Channel}}. A faixa de banda 5,850-5,855 GHz é reservada (\textit{guard frequency}). O canal de Controle é utilizado para mensagens de segurança, enquanto os Canais de Serviços são utilizados para aplicações e servições \textit{non-safety} \cite{sattari-2012,li-2012}.
+
+\begin{figure}[!htbp]
+	\centering
+	\caption{\label{fig:canais_dsrc} Alocação de espectro para aplicações DSRC}
+	\includegraphics[width=15cm]{img/canais-dsrc2.jpeg}
+	\legend{Adapatado de: \cite{Alves-2009}}
+\end{figure}
+
+Em 2004, o IEEE \footnote{Institute of Electrical and Electronics Engineers}, inciou a padronização da comunicação em VANETs a partir do IEEE 802.11 (Wi-Fi). Esse padrão é conhecido como IEEE 802.11p \sigla{WAVE}{\textit{Wireless Access in the Vehicular Environment}}. Os documentos: \citeauthor{IEEE-Std-802.11,IEEE-Std-802.11p,IEEE-Std-1609.1,IEEE-Std-1609.2,IEEE-Std-1609.3,IEEE-Std-1609.4}, definem a arquitetura WAVE. O IEEE 802.11p em conjunto com o grupo IEEE 1609 são conhecidos como WAVE, que tem o objetivo de facilitar o acesso à rede no ambiente das redes veiculares \cite{kenney-2011,Alves-2009,sattari-2012,Yokoyama-2014}.
+
+\begin{figure}[!htbp]
+	\centering
+	\caption{\label{fig:pilha-dsrc-eua} Arquitetura em camadas para comunicação em DSRC nos Estados Unidos}
+	\includegraphics[width=10cm]{img/pilha-dsrc-eua.jpeg}
+	\legend{Fonte: \cite{kenney-2011}}
+\end{figure}
+
+Na \autoref{fig:pilha-dsrc-eua} pode ser visualizado a pilha de protocolos para comunicação DSRC, com o padrão de protocolos a serem utilizados nas diversas camadas. Para a camada física \footnote{PHY \textit{Layer} ou \textit{Physical Layer}} e a 
+subcamada MAC \footnote{\textit{MAC Sublayer ou Media Access Control}} o DRSC utiliza o IEEE 802.11p. No meio da pilha do DSRC emprega o conjunto de padrões definidos pelo grupo IEEE 1609 \cite{li-2012,kenney-2011}.
+
+O padrão \citeauthor{IEEE-Std-1609.1} especifica serviços e aplicações do gerente de recursos da arquitetura e tem o objetivo de propiciar a interoperabilidade das aplicações WAVE. O padrão \citeauthor{IEEE-Std-1609.2} define o formato das mensagens e o processamento de modo a prover segurança, sendo utilizado para serviços de segurança. O padrão \citeauthor{IEEE-Std-1609.3} define os serviços de rede incluindo o protocolo de mensagens curtas WAVE (\sigla{WSMP}{WAVE \textit{Short Message Protocol}}). O padrão \citeauthor{IEEE-Std-1609.4} define a utilização do Canal de Controle e dos de Serviço \cite{kenney-2011,Alves-2009}.
+
+DSRC suporta alguns dos protocolos de Internet para as camadas de transporte e de rede: o IPv6 \footnote{Internet \textit{Protocol version} 6}, o UDP \footnote{\textit{User Datagram Protocol}} e o TCP. A escolha entre o uso do WSMP ou IPv6 em conjunto com o UDP/TCP depende dos requisitos de cada aplicação. Para mensagens de salto único (\textit{single-hop}), geralmente se utiliza WSMP, por ser eficiente em termos de largura de banda. A transmissão de mensagens de múltiplos saltos (\textit{multi-hop}) pode ser feita utilizando IPv6, mas somente se a transmissão for infraestruturada \cite{kenney-2011}.
+
+O formato das mensagens foi definido pela SAE \footnote{Society of Automotive Engineers} no padrão SAE J2735 \footnote{SAE J2735 DSRC \textit{Message Set Dictionary}} de modo a apoiar a interoperabilidade entre as aplicações DSRC. O SAE J2735 especifica um conjunto de mensagens, elementos de dados (\textit{data elements}) e quadros de dados (\textit{data frame}) para uso nas aplicações DSRC/WAVE \cite{kenney-2011,li-2012,Yokoyama-2014,grilli-2010}.
+
+O SAE J2735 define 15 tipos de mensagens, a maioria delas têm em seu escopo a identificação do veículo, dados de localização e o \textit{timestamp}. Um exemplo destas mensagens é a \sigla{BSM}{\textit{Basic Safety Message}}, que transmite informações sobre o estado (e.g., velocidade e localização) do veículo para veículos próximos. Um elemento de dado é uma informação obtida por algum sensor presente no veículo (e.g., velocidade) e por conceito é indivisível. O agrupamento de um conjunto de elementos de dados forma um quadro de dados. Aliada a SAE J2735, existe a SAE J2945.1 (SAE J2945.1 DSRC Minimum Performance Requirements), ainda em desenvolvimento, que especifica os requisitos mínimos de desempenho das comunicações DRSC definidas pela SAE J2735 \cite{li-2012,grilli-2010,kenney-2011}. 
+
+\subsection{Beaconing} \label{beacons}
+
+Um típico quadro de \textit{beacon} (\textit{frame beacon}), em redes sem fio infraestruturadas é um pequeno quadro, transmitido por difusão (\textit{broadcasting}) periodicamente pelo \sigla{AP}{\textit{Access Point}}, por exemplo a cada 100 ms. Os \textit{beacons} informam a presença de um AP para os clientes e carregam parâmetros do sistema, tais como o identificador do AP, o \textit{timestamp}, quanto tempo até o próximo sinal e as configurações de segurança \cite{Kurose-2012,Tanenbaum-2011}.
+
+No cenário de redes sem fio sem infraestrutura (\textit{ad hoc}), não existe uma infraestrutura (AP) que gerencia as conexões, assim os dispositivos se comunicam em pares, assumindo a responsabilidade pela comunicação e também de enviar os \textit{beacons} quando necessário \cite{Kurose-2012}. A estratégia de utilização de \textit{beacons} para comunicação é definida como \textit{beaconing}. No contexto de VANETs, os \textit{beacons} são utilizados para enviar informações de estado (\textit{status}) do veículo (e.g., velocidade, coordenadas geográficas e aceleração). 
+
+De posse das informações de estado dos veículos próximos, é necessário uma aplicação para gerenciá-las e processá-las, apresentando para o motorista avisos importantes sobre a cinemáticas dos veículos próximos. Com esse sistema o motorista pode prever melhor a cinemática dos outros veículos e assim ter uma maior consciência dos acontecimentos e consequentemente propiciar uma maior segurança no trânsito. Os \textit{beacons} são úteis para protocolos de roteamento, pois possibilita a descoberta de um bom veículo próximo para encaminhar uma determinada mensagem  \cite{noori-2013, Nguyen-2002,Fuentes-2011}.
+
+Nas VANETs, os \textit{beacons} precisam ser enviados frequentemente, por serem redes altamente dinâmicas. Entretanto, um frequente envio de \textit{beacons} pode degradar significativamente o desempenho de uma rede altamente densa, devido a muitas colisões de quadros (\textit{frames}). Por outro lado, a baixa taxa de envio de \textit{beacons} pode atrasar a percepção de seus veículos próximos e também reduz a confiabilidade dos protocolos. Desse modo, a frequência ideal de envio dos \textit{beacons} pode variar dependo da quantidade de veículos. \textit{Beaconing} é utilizado em muitas aplicações para VANETs \cite{Nguyen-2002,Thaina-2011,noori-2013}
+
+\subsection{Aplicações em VANETs} \label{apli_vanets}
+
+As aplicações em VANETs podem ser divididas em duas categorias: aplicações de segurança (\textit{safety applications}) e aplicações de gerenciamento do tráfego e entretenimento(\textit{non-safety applications}). As aplicações de segurança têm como objetivo aumentar a segurança no trânsito e assim proporcionar segurança para os veículos e seus passageiros. Elas requisitam um rígido tempo de comunicação, não tolerando atrasos. Como exemplos destas aplicações temos o assistente para mudança de pista e o sistema de alertas de emergência \cite{aboobaker-2010, al-sultan-2014}.
+
+As aplicações de gerenciamento do tráfego e entretenimento tem objetivo de prover informações do tráfego e melhorar o conforto durante a condução, assim proporcionar uma melhor experiência durante a viagem. Elas não requisitam um rígido tempo de comunicação como as aplicações de segurança. Como exemplos destas aplicações temos o sistema de informação do tráfego, o sistema de avisos de pontos de interesse e o provimento de Internet \cite{Soomro-2010,aboobaker-2010,Yokoyama-2014}.
+
+\subsection{Padrões de mobilidade veicular} \label{pmv}
+
+A mobilidade é uma espada de dois gumes, por um lado apresenta um problema desafiador em manter a conexão, por outro propicia os encontros oportunistas que podem ser explorados por redes oportunistas. A mobilidade humana é limitada geograficamente pela distância que pode-se viajar dentro de um dia. Ela é moldada por relações sociais, por ser mais propenso visitar lugares onde amigos vivem ou pessoas semelhantes e lugares que já visitou no passado \cite{Cho-2011, Hui-2005}.
+
+As pessoas, geralmente, se movem periodicamente dentro de uma região limitada, mas, ocasionalmente, fazem viagens de longa distância. A probabilidade de uma pessoa deslocar-se até um local distante é maior se nas proximidades desse local ela já tiver algum amigo. Assim a influência da amizade na mobilidade é mais forte do que a influência da mobilidade sobre a criação de novas amizades \cite{Cho-2011}.
+
+As pessoas apresentam um forte comportamento periódico durante certos períodos do dia alternando entre locais primários (e.g., ``casa'') e secundários (e.g., ``trabalho'') nos dias de semana. Para os fins de semana os locais secundários são definidos pelos lugares presentes na vida social de cada pessoa (e.g., um bar) \cite{Cho-2011}. Para um padrão de mobilidade em um contexto veicular é necessário analisar algumas questões, tais como o horário de pico, a mobilidade alcançada em um dia, o desempenho dos veículos na rodovia e a presença de veículos pesados/grandes na rodovia \cite{Resende-2009}.
+
+O movimento dos veículos é limitado pela estrutura rodoviária (delimita locais onde o veículo consegue se locomover), além de se movimentar em função dela (e.g., se tem boas pistas ou não, se tem uma pista ou duas, se tem muitos cruzamentos ou poucos) e das leis de trânsito (e.g., velocidade máxima permitida, regras de condução). Assim a mobilidade veicular está ligada diretamente com a roda. A velocidade de um veículo também é baseada em função da velocidade dos outros veículos presentes na rodovia, podendo aumentar ou diminuir sua velocidade e também alterar a sua rota para evitar congestionamentos \cite{Mahajan-2006}.
+
+Veículos de diferentes tipos apresentam distintos padrões de mobilidade, cada qual com suas peculiaridades. Pode-se classificar os veículos em algumas categorias, tais como táxi, ônibus, veículo particular ou de passeio e veículos pesados (caminhões) para transporte de carga. Os ônibus têm uma cobertura espacial e temporal limitada (e.g., um ônibus que em determinado horário tem como rota vários bairros da cidade e depois volta para a rodoviária). Desse modo, os ônibus movem-se ao longo de rotas fixas durante um determinado período de tempo, o que implica e um forte padrão de mobilidade. O que pode ser muito útil para o roteamento, dado que a mobilidade dos ônibus (nós na rede) é de certa forma previsível. Dada uma área de destino de uma mensagem, os ônibus cujas rotas cruzar com essa área devem ser preferidos para o roteamento da mensagem \cite{Zhang-2014,Zhang-2012}.
+
+O padrão de mobilidade dos táxis é mais diversificado do que o dos ônibus, com uma maior cobertura espacial e temporal. A mobilidade dos táxi é afetada por dois fatores, as demandas dos clientes e os hábitos de condução do motorista (e.g., um táxi tem como destino o centro da cidade, entretanto o motorista não passará pela avenida principal na tentativa de evitar congestionamentos). Se um táxi está ocupado por algum cliente, a mobilidade é determinada, principalmente, pelo destino do cliente. O motorista pode escolher o caminho mais curto ou o com menor congestionamento. Se o táxi não está ocupado, a mobilidade depende dos hábitos de condução do motorista e da sua preferência de lugares para buscar por novos clientes \cite{Zhang-2012,Zhang-2014}.
+
+A mobilidade dos caminhões é determinada, principalmente, pelo destino da carga e pela preferência de rotas do motorista (e.g., um motorista de caminhão tem que entregar mercadorias em outro estado, assim o destino final é o outro estado, mas ele pode escolher por qual rota seguir, com melhor pista ou com menos pedágios). Para os veículos de passeio ou particulares o padrão de mobilidade é bem diversificado, movendo-se para qualquer lugar que o motorista desejar, assim a mobilidade é determinada em função de onde o motorista deseja ir, seja para casa de um amigo ou para o trabalho. Os veículos de passeio têm algumas rotas com destino e horários pré-definidos (e.g., ir para o trabalho, levar as crianças para escola) e outras esporádicas (e.g., visitar um amigo, ir ao supermercado) \cite{Cunha-2014}.
+
+%\textcolor{red}{Padrões já desenvolvidos Mahajan-2006}
+
+\subsection{Protocolos de roteamento em VANETs} \label{algo_rot_vanets}
+
+O roteamento de mensagens nas VANETs é uma tarefa desafiadora devido à alta mobilidade dos veículos.
+Existe uma variedade de protocolos para roteamento de mensagens para VANETs. Eles podem ser classificados em: topológicos, geográficos, oportunistas e de disseminação de mensagens \citeonline{Alves-2009}.
+
+Os protocolos topológicos buscam encontrar a melhor trajetória entre a origem e o destino em função das métricas utilizadas. Eles precisam descobrir e manter as rotas em uma tabela antes de enviar os dados.  A mobilidade dos veículos pode provocar rápidas mudanças na topologia da rede o que torna um desafio manter as rotas atualizadas \cite{sa-2012}.
+
+Nos protocolos geográficos é necessário que os nós tenham algum sistema de localização (e.g., GPS \footnote{\textit{Global Positioning System}}). Esses protocolos buscam prover escalabilidade em ambientes de alta mobilidade, por não ser necessário manter informações sobre as rotas. No roteamento, um nó fonte envia pacotes de dados em direção a localização do destino por múltiplos saltos, para isto o nó necessita conhecer a posição de seus vizinhos, normalmente por \textit{beaconing}, e a posição de destino. Para descobrir a posição do destinatário, comumente se utiliza algum serviço de localização, que através de uma requisições retornam a localização do destinatário, se ele for encontrado \cite{Alves-2009}.
+
+Os protocolos oportunistas seguem os conceitos das redes oportunistas, trocando informações através dos encontros oportunistas e utilizando a estratégia \textit{store-carry-and-forward} para o roteamento de mensagens. Assim são adequados para ambientes com escassez de nós na rede e para cenários que não existam garantias de estabelecimento de caminhos fim a fim entre a origem e o destino \cite{oliveira-2010}.
+
+Os protocolos de disseminação de mensagens transmitem as mensagens por difusão (\textit{broadcast}), diferente dos outros protocolos que são ponto-a-ponto (\textit{unicast}). A disseminação de mensagens é essencial para algumas aplicações, como aplicações de assistência ao motorista que exigem a disseminação das informações sobre as condições das rodovias. Esses protocolos utilizam a estratégia \textit{store-carry-and-forward} para encaminhar as mensagem e não utilizam tabelas de rotas \cite{Alves-2009}.
+
+%Existem duas abordagens para a transmissão das mensagens, a de uma cópia e a de múltiplas cópias. Na abordagem de uma cópia existe apenas uma cópia em toda rede, depois da transmissão da mensagem, ela é apagada do nó fonte. Por outro lado, na abordagem de múltiplas cópias a mensagem não é apagada e pode ser transmitida para outros nós durantes encontros oportunistas. As mensagens encaminhadas pela a abordagem de múltiplas cópias tem maior  probabilidade de chegar ao seu destino, entretanto tem maior gasto de recursos do que a abordagem de uma cópia e sem medidas de controle pode inundar a rede \cite{costa-2013}.
+
+O \textit{Epidemic} é um exemplo dos protocolos de disseminação de mensagens, que se baseia na distribuição transitiva de mensagens. Cada nó mantém um \textit{buffer} consistente de mensagens próprias, bem como de outros nós. Uma tabela de \textit{hash} é utilizada, com uma chave única para cada mensagem e um vetor de \textit{bits} (\textit{summary vector}) indicando quais entradas na tabela estão ocupadas \cite{Vahdat-2000,oliveira-2010}. 
+
+Quando dois nós entram em alcance de comunicação, o nó com menor identificador inicia uma sessão (\textit{anti-entropy session}) com o outro nó. Nela os nós trocam seus \textit{summary vector} para determinar quais mensagens armazenadas remotamente não foram vistas pelo nó local. Em seguida cada nó solicita cópias das mensagens que ainda não tinha visto. Ao receber as mensagens o nó tem total autonomia para decidir se aceita ou não a mensagem. O nó pode, por exemplo, recusar mensagens acima de determinado tamanho \cite{Vahdat-2000}.
+
+Para evitar conexões redundantes, cada nó mantém um \textit{cache} de nós que teve contato recentemente. A \textit{anti-entropy session} não é reiniciada com nós que foram contatados dentro um período de tempo determinado. O protocolo de roteamento \textit{Epidemic} tem como objetivo maximizar a taxa de entrega de mensagens, minimizando recursos (e.g., memória e largura de banda de rede) consumidos \cite{Vahdat-2000,oliveira-2010}.
+
+\begin{figure}[!htbp]
+	\centering
+	\caption{\label{fig:epidemic} Ilustração da troca de mensagens no algoritmo \emph{Epidemic}}
+	\includegraphics[width=8cm]{img/epidemic.jpeg}
+	\legend{Fonte: \cite{Vahdat-2000}}
+\end{figure}
+
+Na \autoref{fig:epidemic} pode ser visualizado a troca de mensagens no protocolo de roteamento \textit{Epdemic} do ponto de vista do nó $B$. O nó $A$ entra em contato com nó $B$ e inicia a \textit{anti-entropy session}. No primeiro passo, $A$ transmite seu \textit{summary vector}, SVa para $B$. Em seguida $B$ faz uma operação lógica \textit{AND} entre a negação do seu SVb com SVa que é igual à mensagem que $B$ não ``viu'' ainda presente em $A$. $B$ então solicita essas mensagens para $A$ e por fim $A$ transmite tais mensagens para $B$. Esse processo se repete quando $B$ encontra um novo vizinho.
+
+Como exemplo de protocolo oportunista, temos o \sigla{SKVR}{\textit{Scalable Knowledge-Based Routing}} que utiliza o conhecimento prévio das rotas e horários dos ônibus. Em busca de escalabilidade o SKVR trabalha com dois níveis de hierarquias, o interdomínio (entre rotas de ônibus) e o intradomínio (entre os veículos e uma rota de ônibus). No roteamento intredomínio o algoritmo utiliza o conhecimento prévio das rotas dos ônibus, assim a mensagem é encaminhada para algum veículo que tenha na rota o destino da mensagem ou eventualmente cruze a rota de destino. Em última instância, cópias das mensagens são enviadas para parte dos vizinhos do nó. No encaminhamento intradomínio os nós precisam decidir em que sentido da rota enviar a mensagem. Para isto, uma lista de nós encontrados dentro da rota é armazenada \cite{Alves-2009}. 
+
+%\textcolor{red}{add + 2 algoritmos SAR e VADD}
+
+\subsection{Simulações em VANETs} \label{exp_vanets}
+
+%\textcolor{red}{Titulo: Simulações em VANETs ou Experimentos em VANETs?}
+
+Os experimentos no munto real, dependendo do cenário de estudo, podem ser difíceis e ter um alto custo, como é caso das VANETs. Nesse âmbito a simulação é um método eficaz para a avaliação de arquiteturas e algoritmos de roteamento em VANETs. A simulação é um método mais barato e fácil de utilizar do que a execução dos experimentos no mundo real. Além da possibilidade de replicação dos experimentos de maneira fácil e ser possível isolar algum parâmetro para análise. Entretanto, é importante o uso de um modelo de mobilidade realista para que os resultados da avaliação indiquem corretamente o desempenho real do sistema \cite{Saha-2004,Mahajan-2006}.
+
+A gestão da mobilidade é considerada uma questão crítica em redes de telecomunicação de larga escala. No ambiente veicular, a gestão da mobilidade é ainda mais difícil, devido ao movimento característico dos veículos. Apesar do movimento dos veículos ser restrito a rodovia, eles movimentam-se em altas velocidades, com mudança bruscas na direção do movimento e aceleração, além das variações dinâmicas ao longo do dia \cite{uppoor-2012}.
+
+Nas simulações de tráfego, modelos de mobilidade são utilizados para avaliar o desempenho das aplicações e sistemas de comunicação, permitindo analisar o impacto causado pela mobilidade no funcionamento do sistema. Um modelo de mobilidade representa o movimento dos nós ao longo do tempo, disponibilizando informações de localização, velocidade e aceleração \cite{vieira-2011}.
+
+Os modelos de mobilidade podem ser classificados de a acordo com o nível de detalhe: o macroscópico, o microscópico e o mesoscópico. Do ponto de vista microscópico, a mobilidade de cada veículo é estudada individualmente com a atenção focada na sua performance dentro de todo o sistema de tráfego. Nesse nível é possível modelar várias situações do mundo real, como a mudança de pista e a interação com veículos próximos. Desse modo, são modelos de alta complexidade computacional \cite{vieira-2011,tavares-2013}.
+
+O modelo macroscópico não considerada a mobilidade de um veículo específico, mas o fluxo de veículos e suas características, como velocidade e densidade, assim tem baixa complexidade computacional. O modelo mesoscópico agrega características dos dois outros modelos, buscando a escalabilidade da abordagem macroscópica sem abrir mão dos detalhes da microscópica. Nele as entidades individuas podem ser mapeadas, mas as interações entre elas são abstraídas \cite{tavares-2013,vieira-2011}.
+
+O movimento dos veículos nas simulações é obtido através de algum modelo de mobilidade, como o modelo estocástico, onde o movimento dos veículos é definido como aleatório sobre um grafo \cite{vieira-2011}. Uma maneira de se obter o movimento dos veículos nas simulações é utilizando \textit{datasets} como entrada em algum simulador de mobilidade. A vantagem dessa abordagem é poder reproduzir o movimento dos veículos o mais realista possível no ambiente simulado. Por outro lado, tem a desvantagem de ser necessário coletar os dados e a veracidade do movimento fica dependente da qualidade dos dados. O tamanho da área de coleta e a duração também são importantes.
+
+%\section{Mobile crowd sensing}
+%
+%Com o crescente avanço das tecnologias de transmissão e de sensoriamento móvel, principalmente pelo crescente uso e proliferação de telefones inteligentes (\textit{smartphones}), levou a era da Internet das coisas. A Internet das coisas visa o sensoriamento e interligação de vários objetos físicos (dispositivos computacionais) e seus arredores em modelo de identificação único na Internet. A proliferação de dispositivos móveis também possibilitou o surgimento do paradigma \sigla{MCS}{\textit{Mobile Crowd Sensing}}, que aproveita os dispositivos móveis e os sensores presentes neles para coletar dados em larga escala \cite{ma-2014}.
+%
+%No paradigma MCS, os usuários têm a tarefa de recolher e contribuir com dados e assim possibilitar a existência de várias aplicações, tais como o monitoramento do ambiente urbano, o monitoramento do tráfego e estatísticas de disponibilidade de estacionamento. O MCS tem por base a mobilidade dos usuários e assim a mobilidade humana, que oferece oportunidade de sensoriamento de uma área de cobertura e a transmissão de dados \cite{ma-2014}.
+%
+%O sensoriamento em MCS pode ser feito de duas maneiras, de modo participativo ou oportunista. O sensoriamento participativo exige que os usuários optem conscientemente para atender às solicitações da aplicação, decidindo quando (\textit{when}), onde (\textit{where}), o que (\textit{what}) e como (\textit{how}) realizar o sensoriamento. Por outro lado, no sensoriamento oportunista o aplicativo pode ser executado em segundo plano e coletar dados sem participação ativa dos usuários \cite{ma-2014}.
+%
+%A transmissão de dados no paradigma MCS também pode ser realizada de duas maneiras, pela infraestrutura ou de modo oportunista. A transmissão pela infraestrutura considera os usuários enviando os dados do sensoriais através da Internet por redes de telefonia móvel celular. Já a transmissão oportunista permite o encaminhamento dos dados pelos contatos oportunos entre os usuários por meio das conexões intermitentes com comunicações de curto alcance como \textit{Bluetooth} \cite{ma-2014}.
+%
+%A maioria das aplicações MCS adotam o modelo de transmissão baseado em infraestrutura, entretanto ele não é eficiente para cenários onde a cobertura da rede é ruim ou inexistente ou o acesso à rede é caro. O modelo de transmissão oportunista tem a vantagem de não necessitar de um servidor centralizado ou uma infraestrutura de comunicação e gestão, o que pode reduz a carga de trabalho das redes celulares mais densas, transmitindo os dados por contatos oportunistas \cite{ma-2014}.
+
+\chapter{Trabalhos relacionados} \label{trab. rela.}
+
+Neste capítulo são apresentadas as publicações encontradas durante a pesquisa bibliográfica que são mais relacionadas com a proposta deste projeto. \citeonline{campos-2010} fizeram uma análise da mobilidade veicular de ônibus públicos urbanos com o objetivo de investigar características da movimentação dos ônibus. Foram capturados, através de um GPS, 32 registros (\textit{traces}) referente ao movimento de um ônibus durante quase um dia em 15 trajetos na cidade de Muriaé (MG). Os autores afirmam que a definição do movimento dos ônibus possibilitaria melhoras nos protocolos existentes para esse tipo de rede, além de possibilitar o desenvolvimento de modelos de mobilidade mais realistas. Como conclusão afirmam que a maior parte do tempo os ônibus públicos urbanos trafegam entre 10 Km/h e 35 Km/h, com aceleração entre -0,5 m/s$^{2}$ e 0,5 m/s$^{2}$.
+
+\citeonline{mateus-2010} parte do pressuposto que apesar de existirem várias soluções propostas para o problema do roteamento em redes veiculares, nenhuma alcançou desempenho satisfatório em mais de um cenário, como o urbano e o rodoviário. Através de simulações analisaram o impacto da densidade, carga da rede e da mobilidade no desempenho de quatro protocolos de roteamento. Após a conclusão de todos os experimentos, afirmam que o uso de parâmetros de mobilidade para realizar o roteamento é uma característica importante. Com o uso desse parâmetro os erros em rotas tendem a ser menor. Também afirma que os protocolos atuais não estão prontos para serem utilizados no mundo real, sendo necessário melhorias nas métricas. Não é necessário um protocolo específico para cada cenário, mas que os protocolos utilizem as informações da rede, como densidade e número de vizinho para assim ter desempenho satisfatório em mais de um cenário.
+
+\citeonline{uppoor-2012} analisaram o tráfego rodoviário na área metropolitana de Colônia, através do \textit{dataset}\cite{tapas-2014}, com objetivo de extrair características de interesse do ponto de vista de rede. A fim de realizar a análise da mobilidade dos veículos, dividiram o \textit{dataset} em células, identificando cruzamentos com, pelo menos, mil veículos ao longo do dia. A lista resultante é analisada. Apresentaram alguns hábitos de mobilidade encontrados no \textit{dataset}. Ao amanhecer, o tráfego é escasso, com maior densidade no centro da cidade. Das 5 às 6 horas o tráfego cresce rapidamente, mas fica restrito a maiores rodovias. Entre 6 e 7 horas o tráfego se intensifica podendo acarretar em congestionamentos, o que leva os motoristas a procurarem por rotas alternativas e aumenta o tráfego em rodovias secundárias. Após às 8 horas a intensidade do tráfego cai rapidamente. Também analisaram o tempo em que os veículos estão dentro da área de comunicação com outros, tendo como distância cem metros uns dos outros. A grande maioria dos encontros dura apenas alguns segundos (1 s - 15 s) e considerando o tempo necessário para identificar o veículo vizinho e começar a comunicar-se, esses encontros são de difícil utilização pelas aplicações, no entanto também existe os encontros com longa duração, que se forem devidamente identificados podem ser aproveitados para troca de grandes quantidades de dados. Por fim relevam a importância de se utilizar definições de mobilidade realistas para avaliações de soluções de rede em ambientes veiculares, o que representa a dinâmica circulação dos veículos.
+
+%\textcolor{red}{add o de taxi, Zhang-2012,Zhang-2014}
+
+Na literatura existem diversas pesquisas com base na comunicação em VANETs e no desenvolvimento de algoritmos para roteamento de mensagens. Dentro desse contexto, algumas pesquisas estão sendo realizados com foco na mobilidade veicular e no desenvolvimento de modelos mobilidade realistas. Entretanto, não foi encontrado nenhum trabalho que propôs-se a analisar a mobilidade veicular com meta de classificar os veículos em categorias. As pesquisas são mais focadas na criação de modelos de mobilidade realistas para serem utilizados em ambientes de simulação e na construção de protocolos de comunicação. Por outro lado, este projeto busca analisar os hábitos de mobilidade dos veículos e consequentemente dos condutores a fim de classificar a mobilidade dos veículos em algumas categorias básicas. Tais categorias apresentam ser uma maneira prática de se obter a mobilidade de um veículo no momento do encaminhamento de mensagens.
+
+% e em conjunto com a adaptação inserção em algum algoritmo de roteamento tentar otimizar o encaminhamento de mensagens. Assim otimizar o encaminhamento de mensagens ...ter a proposta de fornecer um algoritmo de roteamento de forma eficiente e produtiva, o que se resume este trabalho.
+% movimentações veiculares, entretanto não foi encontrado nenhum estudo que classifica-se os veículos em função de sua mobilidade em categorias para tomada de decisão sobre o encaminhamento.
+
+\chapter{Metodologia} \label{metodologia}
+
+Neste capítulo é apresentada a forma como o trabalho será executado na tentativa de alcançar os objetivos desejados. Através de uma pesquisa bibliográfica, pela literatura e anais de congressos, foi obtido o embasamento teórico sobre as redes veiculares, a sua comunicação e protocolos, que serve como base para todo o desenvolvimento deste projeto.
+
+%\textcolor{red}{Intro e considerações finais?...}
+%\textcolor{red}{Escrever mais, obter os dados, especificar, ver dados de carros...}
+
+\section{Considerações inicias}\label{proposta trabalho}
+
+Este trabalho tem como proposta fazer uma classificação dos veículos em função de sua mobilidade. Os diferentes tipos de veículos apresentam diariamente um padrão de mobilidade diversificado entre si. Ônibus com rotas bem definidas, sejam elas municipal ou intermunicipal. Táxis têm um padrão de mobilidade em função das preferências do motorista e do destino de seus clientes. Caminhões que levam mercadorias com rotas definidas de um ponto a outro. Veículos particulares ou de passeio, que apesar de uma mobilidade bem diversificada, tem locais de destino frequentes. O padrão de mobilidade se faz com algumas diferenças para os diversos tipos de veículos. Nesse cenário, o trabalho tem como objetivo disponibilizar uma maneira prática de se obter o padrão de mobilidades dos veículos para ser utilizado na tomada de decisão sobre o encaminhamento de mensagens.
+
+\section{Ambiente dos Experimentos}
+
+No desenvolvimento do projeto utilizaremos \textit{datasets} (conjuntos de dados) para prover a mobilidade veicular ao simulador. De início escolhemos o \textit{dataset} TAPAS \textit{Cologne} \cite{tapas-2014}, com dados coletados do movimento de veículos de uma grande área metropolitana da cidade de Colônia (em inglês \textit{Cologne}), na Alemanha. É realista tanto do posto de vista microscópico quanto do macroscópico. O \textit{dataset} foi gerado através de várias ferramentas de modo a obter todos aspectos específicos necessários para a caracterização do tráfego de veículos. O cenário de simulação TAPAS \textit{Cologne} descreve o tráfego dentro da cidade por 24 horas, porém disponível livremente apenas duas horas. Os dados originais derivam do \sigla{TAPAS}{\textit{Travel and Activity Patterns Simulation}}, um modelo de previsão de transporte que examina a futura demanda no transporte de passageiros \cite{uppoor-2012,tapas-2014}.
+
+Mapas realistas da topologia das rodovias da região Colônia foram extraídos da base de dados \sigla{OSM}{\textit{OpenStreetMap}}. Mapas do OSM disponibilizam informações sobre as principais infraestruturas rodoviárias, como rodovias de diferentes tipos, edifícios e também dados de semáforos. Informações obtidas por uma vasta comunidade de contribuintes. Os dados OSM empregados no \textit{dataset} TAPAS \textit{Cologne} cobrem uma área de 400 km$^{2}$ em torno da aglomeração urbana, incluindo cerca de 4500 km de rodovias \cite{tapas-2014,uppoor-2012}.
+
+O realismo em nível microscópico no \textit{dataset} é concedido por uma representação do comportamento dos condutores individualmente, em termos de aceleração, frenagem e presença de veículos nas proximidades. A mobilidade de baixo nível é simulada pelo \sigla{SUMO}{\textit{Simulation of Urban MObility}} \cite{SUMO-2012, Sumo-2014}, um simulador de mobilidade urbana e tráfego, de código aberto desenvolvido pelo Centro Aeroespacial Alemão (DLR). O SUMO é utilizado e validado por diversas publicações da comunidade de pesquisa de transporte, sendo um dos mais completos e escaláveis geradores de mobilidade microscópica de código aberto disponível. O \textit{dataset} também é realista do ponto de vista macroscópio, pois reproduz os grandes fluxos de tráfego em toda região metropolitana \cite{uppoor-2012,tapas-2014}.
+
+No ambiente simulado utilizaremos o simulador OMNeT ++ \cite{OMNeT++-2014} para simular o ambiente de rede sem fio e o SUMO para simular a mobilidade veicular a partir do \textit{dataset} TAPAS \textit{Cologne}. O mecanismo de acoplamento bidirecional entre a rede e o modelo de mobilidade é fornecido pelo \sigla{Veins}{\textit{Vehicles in Network Simulation}} \cite{Veins-2014}.
+
+O OMNeT ++ é uma plataforma simulação escrita em C ++ para eventos discretos. Entretanto é aplicado principalmente para simulações de rede devido ao seu pacote INET que fornece um conjunto de protocolos de Internet. A sua estrutura é modular, onde cada módulo pode ser utilizado para produzir entidades (módulos) complexas \cite{OMNeT++-2014}. O Veins é um \textit{framework} de código aberto para a execução de simulações em rede veiculares. Baseia-se em dois simuladores bem estabelecidas: OMNeT ++ e o SUMO, onde oferecer um conjunto de modelos para simulação de comunicação entre veículos \cite{Veins-2014}. A escolha destes simuladores tem por base a sua validação na comunidade científica por diversas publicações e pelo conjunto ser capaz de simular todo ambiente necessário para o desenvolvimento deste projeto.
+
+%Outro \textit{dataset} que será utilizado neste projeto foi criado e disponibilizado por \citeonline{chen-2010}. É um \textit{dataset} de dados de postagens (\textit{tweets}) obtidos da ferramenta de rede social \emph{Twitter}. Além das postagens, contém a informação da localização de onde foi efetuada a postagem, obtida por serviços de compartilhamento da localização, como \emph{Foursquare}. O \textit{dataset} foi desenvolvido com o objetivo de prover informações úteis para a determinação de padrões de mobilidade humana. De modo a permitir um \textit{dataset} realista e bem diversificado, onde cada usuário teria uma pequena parcela do \textit{dataset}, foi coletado no máximo 200 postagens para cada usuário. No total o \textit{dataset} contém dados de 224.804 usuários e 22.388.315 postagens, sendo que algumas postagens não contém a informação de localização.
+
+\section{Proposta de trabalho}
+
+Este projeto é parte de um projeto maior, que envolve a extração de informações de contexto de \textit{datasets} de mobilidade (projeto de mestrado de Wellington Domingues) e na elaboração de estratégias para uso de informações de redes sociais para melhorar o encaminhamento (projeto de Doutorado de Douglas Fabiano). Este projeto deverá ser desenvolvido no Laboratório Intermídia do Instituto de Ciências Matemáticas e de Computação (ICMC).
+
+A princípio será feita uma análise da mobilidade veicular com o objetivo de verificar as principais características da mobilidade nos mais variados tipos de veículos. Este estudo busca reunir características encontradas nas diversas publicações feitas na área e condensá-las em função dos tipos de veículos. Também será utilizado o \textit{dataset} TAPAS \textit{Cologne} para analisar a mobilidade veicular.
+
+A escolha entre tipos de veículos deverá possibilitar a distinção de um veículo dos demais, levando em conta as características da mobilidade de cada um. A princípio estipulamos os tipos de veículos em: táxi, ônibus (municipal e intermunicipal), caminhões ou veículos de transporte de cargas e veículos de passeio. Ainda será feita uma análise de outros tipos de veículos, como os de serviços públicos (e.g., polícia, ambulância e correios), para ser inserida na classificação.
+
+Após a escolha dos tipos de veículos em conjunto com o padrão de mobilidade de cada um é possível classificar os veículos em categorias. De início a classificação terá 10 categorias, onde acreditamos que poderá cobrir de modo geral todos os tipos de veículos. Categorias de A até I, onde, por exemplo, a categoria B determina o padrão de mobilidade dos táxis. O envio da classificação foi pensado de modo a necessitar de pouca transferência de dados, de modo que seja rápido. Também deve utilizar a estrutura de comunicação das VANETs já desenvolvida, de modo integrar com as tecnologias já desenvolvidas.
+
+Cada veículo enviará a sua categoria para os veículos vizinhos através dos \textit{beacons}. \textit{Beaconing} foi a maneira escolhida por ser uma maneira rápida de enviar dados a outros veículos e já estar implementada por padrão no ambiente das VANETs. Assim através dos \textit{beacons} o veículo saberá quais são seus vizinhos, a localização deles e a categoria que eles pertencem.
+
+Quando um veículo for enviar uma mensagem, analisará a lista de vizinhos e a categoria que eles pertencem. Baseado no destino da mensagem, o veículo processa qual é a categoria mais recomendada para encaminhar a mensagem. Depois o veículo seleciona os veículos da lista de vizinhos que fazem parte dessa categoria e a partir deste momento uma métrica pode ser utiliza para a escolha do veículo ou dos veículos que encaminharam a mensagem. Se não existir nenhum veículo pertencente a categoria próximo do veículo, pode-se esperar um tempo e tentar novamente ou pode aproveitar o encontro oportunista e encaminhar a mensagem para algum veículo vizinho utilizando alguma métrica.
+
+A partir da classificação é possível a implementação de um algoritmo para transmissão de mensagens para um grupo ou tipos específicos de veículos. Uma mensagem enviada para táxis, por exemplo, teria em seu cabeçalho a sua categoria, B. Os outros veículos, que não são táxis, analisariam o cabeçalho a mensagem e ao verificar que é para a categoria B, já a descartam, economizando em processamento. Nesse âmbito é interessante criar uma categoria de veículos para uso geral, sendo destinada para todos os veículos.
+
+Em sequência é feito o estudo de alguns algoritmos desenvolvidos para VANETs. O estudo dos algoritmos tem como objetivo analisar estratégias e funcionalidades implementadas no encaminhamento de mensagens. Com todas estas informações parte-se para adaptação de um dos algoritmos, que leva em consideração a classificação dos veículos em categorias.
+
+Simulação foi a forma escolhida para testar o algoritmo adaptado, porque testes reais são caros, difíceis e podem ser perigosos. Os simuladores que serão utilizados para este trabalho são o SUMO \cite{Sumo-2014}, o simulador de mobilidade; o OMNeT++ \cite{OMNeT++-2014}, o simulador da rede; e o Veins \cite{Veins-2014}, que é a plataforma de integra os dois simuladores.
+
+A partir do algoritmo adaptado, simulações serão feitas utilizando o \textit{datasets} (e.g., o \textit{dataset} TAPAS Cologne \cite{tapas-2014}) como entrada, com objetivo de manter o movimento dos veículos o mais próximo do real possível. Assim as informações de mobilidades dos veículos (e.g., velocidade, direção e tipo do veículo) serão obtidas através do \textit{dataset}. Com resultados das simulações poderemos verificar a eficiência do algoritmo no encaminhamento de mensagens, comparando a taxa de encaminhamento utilizando a classificação dos veículos e sem ela. O algoritmo será implementado em \textit{software} livre e processado em ambiente Cloud-based do Cloud-USP ou Cloud-ICMC. Durante o projeto trabalharemos em cooperação com o grupo de Nishanth Sastry do \emph{King's College} de Londres. O grupo de Nishanth Sastry tem suas pesquisas concentradas nas estruturas e arquiteturas utilizadas para a divulgação e consumo de conteúdo \textit{online}. O que abrange tanto ao nível de infraestrutura (redes de computadores) quanto ao de pessoas (redes sociais).
+
+%Também utilizaremos o \textit{dataset} de postagens na ferramenta de rede social \emph{Twitter}. A análise desse \textit{dataset} tem por objetivo observar semelhanças entre a mobilidade veicular e humana e interligação entre elas. Em conjunto da \textit{Mobile Crowd Sensing} e sua capacidade de descoberta de conhecimento em função dos sensores presentes nos dispositivos e em função do encaminhamento de mensagens, está análise foca em encontrar os principais \textit{hotspots} da movimentação humana e se também se apresentam na base de dados veicular. Assim busca descobrir quais são as principais localidades que são \textit{hotspots} e que poderia ser bom um destino para o encaminhamento de mensagens, levando em conta que em um \textit{hotspot} é provável que existam muitos veículos. Outro ponto da análise desse \textit{dataset} é na busca de obter hábitos de deslocamento de usuários móveis, tais hábitos que são úteis para o roteamento das mensagens.
+
+\section{Cronograma}
+
+Para cumprir os objetivos descritos, o plano de pesquisa foi dividido em atividades. Nas atividades incluem tarefas do programa de mestrado e desenvolvimento do projeto proposto. O cronograma de atividades do projeto pode ser visualizado na \autoref{tab:cronograma}, onde está definida a duração das principais atividades.
+
+\begin{table}[!htbp]
+	\centering
+	\caption{Cromograma do projeto divido em faixas de tempo} \label{tab:cronograma}
+	\begin{tabular}{c|c|c|c|c|c|c|c|c|c|c}
+		\hline 
+		\multirow{2}{*}{Atividade} & \multicolumn{4}{c|}{2014} & \multicolumn{5}{c|}{2015}  & \multicolumn{1}{c}{2016} \\ \cline{2-11} 
+		& 2-6 & 7 & 8-11 & 12 & 1-2 & 3-4 & 5-7 & 8-10 & 11-12 & 1-2\\ \hline 
+		A1 & $\bullet$ & & $\bullet$ & & & $\bullet$ & $\bullet$ & & & \\ \hline
+		A2 & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & & \\ \hline
+		A3 & & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & & & & & \\ \hline
+		A4 & & & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & & & & \\ \hline
+		A5 & & & & $\bullet$ & $\bullet$ & $\bullet$ & & & & \\ \hline
+		A6 & & & & & & $\bullet$ & & & & \\ \hline
+		A7 & & & & & & $\bullet$ & $\bullet$ & & & \\ \hline 
+		A8 & & & & & & & $\bullet$ & $\bullet$ & & \\ \hline
+		A9 & & & & & & & & & $\bullet$ & \\ \hline
+		A10 & & & & & & & & & $\bullet$ & $\bullet$ \\ \hline
+	\end{tabular}
+	%\fonte{Próprio Autor}
+\end{table}%
+
+As atividades são descritas abaixo:
+\begin{enumerate}
+	\item[A1.] Assistir disciplinas definidas para o período e participar das reuniões do grupo.
+	\item[A2.] Pesquisa bibliográfica por meio de livros, artigos, anais de congressos e periódicos, como parte do processo contínuo de embasamento teórico.
+	\item[A3.] Escrita da monografia para qualificação.
+	\item[A4.] Estudo de padrões de mobilidade veicular e a classificação dos veículos em categorias.
+	\item[A5.] Estudo de alguns algoritmos de roteamento desenvolvidos para VANETs.
+	\item[A6.] Defesa do Exame Geral de Qualificação.
+	\item[A7.] Adaptação de um dos algoritmos de roteamento desenvolvido para VANETs e configuração do ambiente de simulação, que compreende a instalação e configuração dos simuladores.
+	\item[A8.] Validação dos resultados por meio das simulações e início da escrita da dissertação.
+	\item[A9.] Publicação de resultados, por meio da redação de artigos para eventos e periódicos nacionais e/ou internacionais.
+	\item[A10.] Finalização da dissertação e preparação para defesa.
+\end{enumerate}
+
+%\chapter{Resultados esperados}
+
+%\textcolor{red}{Não sei se este capítulo é realmente importante para o documento de qualificação, afinal, não dá para concluir nada sem resultados do projeto, concorda? Não sei se é legal também ter um capítulo de 1/2 página. Se achar interessante mantê-lo, talvez seja banca acrescentar uma seção 5.1 chamada resultados esperados. O que acha?}
+
+%Com base na pesquisa bibliográfica realizada e na visualização da situação do trânsito mundial, acreditamos que este projeto tem relevância na tentativa de melhorar esse cenário. A classificação de veículos poderia facilitar a tarefa de obter o padrão de mobilidade dos veículos e ajudar a decidir se ele é um bom nó condutor para determinada mensagem. Essa classificação também pode ser utilizada para a comunicação entre veículos de determinadas categorias, enviando mensagens úteis exclusivamente para eles. Nesse cenário os veículos só precisam analisar o cabeçalho do pacote para verificar se a mensagem é para ele ou não. Com a implementação da classificação poderá melhorar um pouco a caótica situação do trânsito mundial e salvar vidas.
+
+% ---
+% Finaliza a parte no bookmark do PDF, para que se inicie o bookmark na raiz
+% ---
+\bookmarksetup{startatroot}% 
+% ---
+
+% ----------------------------------------------------------
+% ELEMENTOS PÓS-TEXTUAIS
+% ----------------------------------------------------------
+\postextual
+
+% ----------------------------------------------------------
+% Referências bibliográficas
+% ----------------------------------------------------------
+\bibliography{references}
+
+%% ---------------------------------------------------------------------
+%% GLOSSÁRIO
+%% ---------------------------------------------------------------------
+%
+%% Arquivo que contém as definições que vão aparecer no glossário
+%\input{tex/glossario}
+%% Comando para incluir todas as definições do arquivo glossario.tex
+%\glsaddall
+%% Impressão do glossário
+%\printglossaries
+%
+%% ----------------------------------------------------------
+%% Apêndices
+%% ----------------------------------------------------------
+%
+%% ---
+%% Inicia os apêndices
+%% ---
+%\begin{apendicesenv}
+%
+%    \chapter{Documento básico usando a classe \textit{icmc}}
+%    \label{chapter:documento-basico}
+%    \input{tex/appendix/documento-basico}
+%    
+%    \chapter{Configuração do programa JabRef}
+%    \label{chapter:configuracao-jabref}
+%    \input{tex/appendix/configuracao-jabref}
+%
+%\end{apendicesenv}
+%% ---
+%
+%
+%% ----------------------------------------------------------
+%% Anexos
+%% ----------------------------------------------------------
+%
+%% ---
+%% Inicia os anexos
+%% ---
+%\begin{anexosenv}
+%
+%    \chapter{Páginas interessantes na Internet} 
+%    \label{chapter:paginas-interessantes}
+%    \input{tex/annex/paginas-interessantes}
+%
+%\end{anexosenv}
+%% ---
+
+\end{document}
