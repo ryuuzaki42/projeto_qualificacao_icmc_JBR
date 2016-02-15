@@ -1,2 +1,3 @@
 #!/bin/bash
-makeindex thesis.nlo -s nomencl.ist -o thesis.nls 
+makeindex thesis.nlo -s nomencl.ist -o thesis.nls
+#
