@@ -21,7 +21,7 @@
 %%
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{packages/icmc}[2015/01/07 v1.1.9 Classe ICMC baseado em abnTeX2 - Teses e Dissertações dos  
+\ProvidesClass{packages/icmc}[2016/01/26 v1.2.1 Classe ICMC baseado em abnTeX2 - Teses e Dissertações dos  
 Programas de Pós-graduação do Instituto de Ciências Matemáticas e de Computação]
 \RequirePackage{xifthen}
 
@@ -106,6 +106,7 @@ Programas de Pós-graduação do Instituto de Ciências Matemáticas e de Comput
                                     % (utilizado no título)
 \RequirePackage{graphicx}			% Inclusão de gráficos
 \RequirePackage{caption}            % Pacote para definição dos captions
+\RequirePackage{subcaption}         % Pacote para definição dos subcaptions (ambientes de subfigures)
 \RequirePackage{microtype} 		    % para melhorias de justificação
 \RequirePackage{pdfpages}           % inclusão de arquivos PDF
 \RequirePackage{ifxetex}            % verifica se a compilação ocorre por xetex
@@ -124,7 +125,7 @@ Programas de Pós-graduação do Instituto de Ciências Matemáticas e de Comput
 \RequirePackage{pgffor}             % Pacote utilizado para gerar as
                                     % palavras-chave da ficha catalográfica
 \RequirePackage{nomencl}            % Pacote para criação da Lista de Siglas
-\RequirePackage[translate=babel,nonumberlist,style=altlist,toc]{glossaries}	 % Pacote para gerar o glossário
+\RequirePackage[noredefwarn,translate=babel,nonumberlist,style=altlist,toc]{glossaries}	 % Pacote para gerar o glossário
 \RequirePackage[brazilian,hyperpageref]{backref} % Paginas com as citações na bibl
 \RequirePackage[alf,bibjustif,abnt-last-names=abnt,abnt-etal-text=it,abnt-repeated-title-omit=yes,abnt-emphasize=bf,abnt-etal-cite=3,abnt-etal-list=0]{abntex2cite}   % Citações padrão ABNT
 
@@ -142,7 +143,7 @@ Programas de Pós-graduação do Instituto de Ciências Matemáticas e de Comput
 
 % Configuração do texto do preâmbulo
 \addto\captionsenglish{% ingles
-    \renewcommand{\exam}{ in partial fulfillment of the requirements for the degree of the}
+    \renewcommand{\exam}{ in partial fulfillment of the requirements for the degree}
 }
 \addto\captionsbrazil{% portugues-brasil
     \renewcommand{\exam}{ como parte dos requisitos para obten{\c c}{\~a}o do t{\'i}tulo de}
@@ -168,7 +169,7 @@ Programas de Pós-graduação do Instituto de Ciências Matemáticas e de Comput
 % Configuração do tipo de trabalho para DOUTORADO ou MESTRADO
 \ifthenelse{\boolean{opt-doutorado}}{
     \addto\captionsenglish{% ingles
-        \renewcommand{\degree}{Doctorate}
+        \renewcommand{\degree}{of the Doctorate}
         \renewcommand{\tipodocurso}{Doctorate Candidate}
         \tipotrabalho{Doctoral dissertation}
     }
@@ -179,7 +180,7 @@ Programas de Pós-graduação do Instituto de Ciências Matemáticas e de Comput
     }
 }{
     \addto\captionsenglish{% ingles
-        \renewcommand{\degree}{Master}
+        \renewcommand{\degree}{of the Master}
         \renewcommand{\tipodocurso}{Master student}
         \tipotrabalho{Master dissertation}
     }
@@ -397,7 +398,7 @@ Programas de Pós-graduação do Instituto de Ciências Matemáticas e de Comput
     \renewcommand{\glossaryname}{Glossário}
 }
 % Estilo de apresentação do glossário
-\glossarystyle{list}
+\setglossarystyle{list}
 
 % Contador de definições do Glossário
 \newcounter{count_glossario}
@@ -558,10 +559,11 @@ Programas de Pós-graduação do Instituto de Ciências Matemáticas e de Comput
 
 % CCMC ==========================================================================
     \ifthenelse{\equal{#1}{CCMC}}{
-        \area{Ciências de Computação e Matemática Computacional}
-        \programa{Programa de Pós-Graduação em Ciências de Computação e Matemática Computacional}
-        \especialidade{em Ciências -- Ciências de Computação e Matemática Computacional}
-        
+        \addto\captionsbrazil{
+            \area{Ciências de Computação e Matemática Computacional}
+            \programa{Programa de Pós-Graduação em Ciências de Computação e Matemática Computacional}
+            \especialidade{em Ciências -- Ciências de Computação e Matemática Computacional}
+        }
         \addto\captionsenglish{% ingles
             \area{Computer Science and Computational Mathematics}
             %\programa{Programa de Pós-Graduação em Ciências de Computação e Matemática Computacional}
@@ -570,9 +572,11 @@ Programas de Pós-graduação do Instituto de Ciências Matemáticas e de Comput
     }{
 % MAT ===========================================================================
         \ifthenelse{\equal{#1}{MAT}}{
-            \area{Matemática}
-            \programa{Programa de Pós-Graduação em Matemática}
-            \especialidade{em Ciências -- Matemática}
+            \addto\captionsbrazil{
+                \area{Matemática}
+                \programa{Programa de Pós-Graduação em Matemática}
+                \especialidade{em Ciências -- Matemática}
+            }
             \addto\captionsenglish{% ingles
                 \area{Mathematics}
                 %\programa{Programa de Pós-Graduação em Matemática}
@@ -581,11 +585,13 @@ Programas de Pós-graduação do Instituto de Ciências Matemáticas e de Comput
         }{
 % PIPGES ========================================================================     
             \ifthenelse{\equal{#1}{PIPGES}}{
-                \universidade{USP/UFSCar}
-                \instituicao{Instituto de Ciências Matemáticas e de Computação -- ICMC-USP e ao Departamento de Estatística -- DEs-UFSCar}
-                \area{Estatística}
-                \programa{Programa Interinstitucional de Pós-Graduação em Estatística}
-                \especialidade{em Estatística -- Interinstitucional de Pós-Graduação em Estatística}
+                \addto\captionsbrazil{
+                    \universidade{USP/UFSCar}
+                    \instituicao{Instituto de Ciências Matemáticas e de Computação -- ICMC-USP e ao Departamento de Estatística -- DEs-UFSCar}
+                    \area{Estatística}
+                    \programa{Programa Interinstitucional de Pós-Graduação em Estatística}
+                    \especialidade{em Estatística -- Interinstitucional de Pós-Graduação em Estatística}
+                }
                 \addto\captionsenglish{% ingles
                     \instituicao{Instituto de Ciências Matemáticas e de Computação -- ICMC-USP and to the Departamento de Estatística -- DEs-UFSCar}
                     \area{Statistics}
@@ -595,20 +601,25 @@ Programas de Pós-graduação do Instituto de Ciências Matemáticas e de Comput
             }{
 % PROFMAT =======================================================================
                 \ifthenelse{\equal{#1}{PROFMAT}}{
-                    \area{Matemática}
-                    \programa{Programa de Pós-graduação em Mestrado Profissional em Matemática em Rede Nacional}
-                    \especialidade{-- Programa de Mestrado Profissional em Matemática}
+                    \addto\captionsbrazil{
+                        \area{Matemática}
+                        \programa{Programa de Pós-graduação em Mestrado Profissional em Matemática em Rede Nacional}
+                        \especialidade{em Ciências -- Programa de Mestrado Profissional em Matemática}
+                    }
                     \addto\captionsenglish{% ingles
                         \area{Mathematics}
                         %\programa{Programa de Pós-graduação em Mestrado Profissional em Matemática em Rede Nacional}
-                        \especialidade{-- Program in Mathematics Professional Master}
+                        \especialidade{of Mathematics Professional Master’s Program}
+                        \renewcommand{\imprimirpreambulo}{\nohyphens{\imprimirtipotrabalho~submitted to the \imprimirinstituicao,\exam~\imprimirespecialidade. \textit{\tipoexemplar}}}
                     }
                 }{
 % MECAI =========================================================================
                     \ifthenelse{\equal{#1}{MECAI}}{
-                        \area{Matemática, Estatística e Computação Aplicadas à Indústria}
-                        \programa{Programa de Pós-graduação em Mestrado Profissional em Matemática, Estatística e Computação Aplicadas à Indústria}
-                        \especialidade{-- Programa de Mestrado Profissional em Matemática, Estatística e Computação Aplicadas à Indústria}
+                        \addto\captionsbrazil{
+                            \area{Matemática, Estatística e Computação Aplicadas à Indústria}
+                            \programa{Programa de Pós-graduação em Mestrado Profissional em Matemática, Estatística e Computação Aplicadas à Indústria}
+                            \especialidade{-- Programa de Mestrado Profissional em Matemática, Estatística e Computação Aplicadas à Indústria}
+                        }
                         \addto\captionsenglish{% ingles
                             \area{Mathematics, Statistics and Computing Applied to Industry}
                             %\programa{Programa de Pós-graduação em Mestrado Profissional em Matemática, Estatística e Computação Aplicadas à Indústria}
@@ -642,21 +653,24 @@ Programas de Pós-graduação do Instituto de Ciências Matemáticas e de Comput
 }
 
 % Nome do Mês
-\newcommand\Monthname[1][EMPTY]{%
-    \begin{switch}{#1}%
-        \case{1}{Janeiro}%
-        \case{2}{Fevereiro}%
-        \case{3}{Março}%
-        \case{4}{Abril}%
-        \case{5}{Maio}%
-        \case{6}{Junho}%
-        \case{7}{Julho}%
-        \case{8}{Agosto}%
-        \case{9}{Setembro}%
-        \case{10}{Outubro}%
-        \case{11}{Novembro}%
-        \case{12}{Dezembro}%
-    \end{switch}%
+\providecommand*{\Monthname}{}
+\addto\captionsbrazil{
+    \renewcommand\Monthname[1][EMPTY]{%
+        \begin{switch}{#1}%
+            \case{1}{Janeiro}%
+            \case{2}{Fevereiro}%
+            \case{3}{Março}%
+            \case{4}{Abril}%
+            \case{5}{Maio}%
+            \case{6}{Junho}%
+            \case{7}{Julho}%
+            \case{8}{Agosto}%
+            \case{9}{Setembro}%
+            \case{10}{Outubro}%
+            \case{11}{Novembro}%
+            \case{12}{Dezembro}%
+        \end{switch}%
+    }
 }
 \addto\captionsenglish{% ingles
     \renewcommand\Monthname[1][EMPTY]{%
@@ -725,11 +739,13 @@ Programas de Pós-graduação do Instituto de Ciências Matemáticas e de Comput
 }
 
 % Comando para inclusão da ficha catalográfica
+\newboolean{opt-fichacatalografica}
+\setboolean{opt-fichacatalografica}{false}
 \def\incluifichacatalografica{\@ifstar\@incluifichacatalografica\@@incluifichacatalografica}
 % Incluir um arquivo externo como ficha catalográfica
-\def\@incluifichacatalografica#1{\gdef\@incluifichacatalografica{true}\gdef\@arquivofichacatalografica{#1}}          % \incluifichacatalografica*{}{} 
+\def\@incluifichacatalografica#1{\setboolean{opt-fichacatalografica}{true}\gdef\@arquivofichacatalografica{#1}}          % \incluifichacatalografica*{}
 % Gera a ficha catalográfica automaticamente de acordo com o número da Tabela de Cutter http://www.davignon.qc.ca/cutter1.html
-\def\@@incluifichacatalografica#1{\gdef\@incluifichacatalografica{true}\gdef\@codigocutter{#1}}  % \incluifichacatalografica{}{}
+\def\@@incluifichacatalografica#1{\setboolean{opt-fichacatalografica}{true}\gdef\@codigocutter{#1}}  % \incluifichacatalografica{}
 
 
 %================================================================================
@@ -1156,13 +1172,6 @@ Programas de Pós-graduação do Instituto de Ciências Matemáticas e de Comput
 
 % alterando a capa
 \renewcommand{\imprimircapa}{%
-%%%%%
-\setcounter{page}{1}
-%\pagenumbering{Roman}
-
-\pdfbookmark[0]{Capa}{capa}
-%%%%%
-	
   \begin{capa}%
     \center
     ~\\
@@ -1185,8 +1194,6 @@ Programas de Pós-graduação do Instituto de Ciências Matemáticas e de Comput
 
 % folha de rosto
 \renewcommand{\folhaderostocontent}{
-%%%
-\iflanguage{english}{\setcounter{page}{5}}{\setcounter{page}{3}}
 
 \vspace*{-6.2mm}
 \iflanguage{english}{\vspace{2.95cm}}
@@ -1370,17 +1377,17 @@ Programas de Pós-graduação do Instituto de Ciências Matemáticas e de Comput
     \imprimircapa
 
     % Folha de rosto e Ficha catalográfica (se houver)
-    \@ifundefined{@incluifichacatalografica}{
-        \begin{otherlanguage}{brazil}
-            \imprimirfolhaderosto{}
-        \end{otherlanguage}
-    }{
+    \ifthenelse{\boolean{opt-fichacatalografica}}{
         % (o * indica que haverá a ficha bibliográfica)
         \begin{otherlanguage}{brazil}
             \imprimirfolhaderosto*{}
         \end{otherlanguage}
 		\inserefichacatalografica
 		\newpage
+    }{
+        \begin{otherlanguage}{brazil}
+            \imprimirfolhaderosto{}
+        \end{otherlanguage}
     }
     
     \begin{otherlanguage}{english}
