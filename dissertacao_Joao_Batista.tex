@@ -10,14 +10,14 @@
 % ------------------------------------------------------------------------
 
 % Opções: 
-%   Qualificação         = qualificacao 
+%   Qualificação         = qualificacao
 %   Curso                = doutorado/mestrado
 %   Situação do trabalho = pre-defesa/pos-defesa (exceto para qualificação)
 % -- opções do pacote babel --
 % Idioma padrão = brazil
-	%spanish,			% idioma adicional para hifenização
-	%english,			% idioma adicional para hifenização
-	%brazil				% o último idioma é o principal do documento
+    %spanish,           % idioma adicional para hifenização
+    %english,           % idioma adicional para hifenização
+    %brazil             % o último idioma é o principal do documento
 %\documentclass[mestrado, pos-defesa, spanish, english, brazil]{packages/icmc}
 \documentclass[mestrado, pre-defesa, english, brazil]{packages/icmc}
 
@@ -43,6 +43,11 @@
 \newcommand{\VerbL}{0.52\textwidth}
 \newcommand{\LatL}{0.42\textwidth}
 
+% Colorinlistoftodos package: to insert colored comments so authors can collaborate on the content.
+% Link: http://www.inf.ufes.br/~vitorsouza/blog/controle-de-alteracoes-em-latex-usando-git-e-sourcetree/
+\usepackage[colorinlistoftodos, textwidth=20mm, textsize=footnotesize]{todonotes}
+\newcommand{\ideia}[1]{\todo[author=\textbf{Ideia},color=green!30,caption={},inline]{#1}}
+\newcommand{\duvida}[1]{\todo[author=\textbf{Dúvida},color=red!30,caption={},inline]{#1}}
 
 % ---
 % Informações de dados para CAPA e FOLHA DE ROSTO
@@ -69,14 +74,13 @@
     A quantidade de veículos aumenta a cada dia e aliada com a falta de infraestrutura necessária, torna a situação do trânsito mundial ainda mais caótica e perigosa. Esse cenário pode ser melhorado com as VANETs (\textit{Vehicular Ad hoc NETworks}) que, aliadas aos Sistemas de Transporte Inteligente, tem o objetivo de melhorar a eficiência, a segurança e o conforto dos passageiros nos sistemas de transporte. Para tal, as VANETs utilizam interfaces de comunicação sem fio e sensores implantados nos veículos. Os veículos pertencentes a uma VANET podem se comunicar entre si ou com uma infraestrutura, que é assumida a ser localizada na margem da estrada. A comunicação nas VANETs é feita por meio de encontros oportunistas, assim uma mensagem pode passar por um ou vários nós intermediários até chegar ao nó de destino. Para rotear estas mensagens, foram desenvolvidos alguns protocolos. Neste projeto esperamos classificar os veículos em categorias em função dos seus hábitos de mobilidade e assim criar uma maneira de se inferir o padrão de mobilidade dos veículos de forma prática. Em sequência incorporá-la em algum protocolo de roteamento, assim como seus hábitos de mobilidade, com o intuito de melhorar o encaminhamento de mensagens nas VANETs. Os resultados serão validados por meio de simulações.
     }{Vehicular Ad hoc Networks, Encaminhamento de Mensagens, Redes Oportunistas, Sistemas de Transporte Inteligente}
 
-
 % resumo em INGLÊS
 % conter no máximo 500 palavras
 % conter no mínimo 1 e no máximo 5 palavras-chave
 \textoresumo[english]{
     The number of vehicles is increasing daily and combined with the lack of necessary infrastructure, makes the situation of the global traffic even more chaotic and dangerous. This scenario can be improved with VANETs (Vehicular Ad hoc Networks) which, combined with the Intelligent Transport Systems, aims to improve the efficiency, safety and passenger comfort in transport systems. To this end, VANETs use wireless communication interfaces and sensors deployed in vehicles. Vehicles belonging to a VANET can communicate with each other or with an infrastructure, which is assumed to be located on the side of the road. The communication in VANETs is made through opportunistic encounters, so a message can pass through one or more intermediate nodes until you reach your destination. To route these messages were developed some algorithms. In this project we hope to classify vehicles into categories according to their mobility habits and thus create a way to infer the pattern of mobility of practical vehicles. In consequently insert a routing algorithm classification of vehicles, as well as their mobility habits, in order to improve the routing of messages in VANETs. The results will be validated by simulations.
     }{Vehicular Ad hoc Networks, Message Forwarding, Opportunistic Networks, Intelligent Transportation Systems}
-    
+
 % ---
 % Configurações de aparência do PDF final
 % ---
@@ -86,20 +90,20 @@
 % informações do PDF
 \makeatletter
 \hypersetup{
-     	pagebackref=true,
-		pdftitle={\@title}, 
-		pdfauthor={\@author},
-    	pdfsubject={\imprimirpreambulo},
-	    pdfcreator={LaTeX with abnTeX2/ICMC-USP},
-		pdfkeywords={\palavraschave},
-		%%%% comentado na minha versão
-		colorlinks=true,       		% false: boxed links; true: colored links
-    	linkcolor=blue,          	% color of internal links
-    	citecolor=blue,        		% color of links to bibliography
-    	filecolor=magenta,      	% color of file links
-		urlcolor=blue,
-		bookmarksdepth=4
-		%%%% adicionado na minha versão
+         pagebackref=true,
+        pdftitle={\@title}, 
+        pdfauthor={\@author},
+        pdfsubject={\imprimirpreambulo},
+        pdfcreator={LaTeX with abnTeX2/ICMC-USP},
+        pdfkeywords={\palavraschave},
+        %%%% comentado na minha versão
+        colorlinks=true,       		% false: boxed links; true: colored links
+        linkcolor=blue,          	% color of internal links
+        citecolor=blue,        		% color of links to bibliography
+        filecolor=magenta,      	% color of file links
+        urlcolor=blue,
+        bookmarksdepth=4
+        %%%% adicionado na minha versão
         pdfkeywords={Vehicular Ad hoc Networks, Message Forwarding, Opportunistic Networks, Intelligent Transportation Systems.}, 
         pdfproducer={Slackware with Latex and abnTeX2},
         pdfstartview={FitH},
@@ -108,7 +112,7 @@
         pdfborder={0 0 0}
 }
 \makeatother
-% --- 
+% ---
 
 % ----------------------------------------------------------
 % ELEMENTOS PRÉ-TEXTUAIS
@@ -211,9 +215,9 @@ O restante deste documento está organizado da seguinte forma: A \autoref{objeti
 O objetivo geral deste projeto é otimizar o roteamento ou o encaminhamento de mensagens utilizando a classificação dos veículos em categorias para implementação de serviços \textit{non-safety}. Os principais resultados esperados deste projeto:
 
 \begin{itemize}
-	\item classificação dos veículos em categorias para tomada de decisão no encaminhamento de mensagens;
-	\item Otimizar o encaminhamento de informações no modelo de comunicação veículo com veículo;
-	\item criação de cenários, em um ambiente de simulação, para validação dos resultados.
+    \item classificação dos veículos em categorias para tomada de decisão no encaminhamento de mensagens;
+    \item Otimizar o encaminhamento de informações no modelo de comunicação veículo com veículo;
+    \item criação de cenários, em um ambiente de simulação, para validação dos resultados.
 \end{itemize}
 
 \section{Motivação} \label{motivacao}
@@ -245,10 +249,10 @@ Nas redes com infraestrutura, os usuários podem, em função da mobilidade, exp
 Nos encontros oportunistas, os dispositivos trocam dados utilizando protocolos de curto alcance a fim de alcançar o destino desejado. Assim, o caminho da origem ao destino é construído ao longo do tempo e consiste de uma cadeia de nós intermediários. Tais nós transportam altruisticamente dados ou mensagens do remetente em vários momentos antes do destino recebê-los \cite{Sastry-2011}.
 
 \begin{figure}[!htbp]
-	\centering
-	\caption{\label{fig:rote_oport} Ilustração do roteamento oportunista}
-	\includegraphics[width=16cm]{img/roteamento.jpeg}
-	\legend{Fonte: \cite{Vahdat-2000}}
+    \centering
+    \caption{\label{fig:rote_oport} Ilustração do roteamento oportunista}
+    \includegraphics[width=16cm]{img/roteamento.jpeg}
+    \legend{Fonte: \cite{Vahdat-2000}}
 \end{figure}
 
 O roteamento de mensagens aproveitando-se dos encontros oportunistas é definido como roteamento oportunista, representado na (\autoref{fig:rote_oport}). Na \autoref{fig:rote_oport} (a), um nó fonte $S$ deseja enviar uma mensagem para um nó de destino $D$, entretanto não existe nenhum caminho disponível (i.e., conectividade fim a fim de $S$ para $D$). Assim $S$ transmite sua mensagem para seus dois vizinhos, $C1$ e $C2$, em área de comunicação direta. Algum tempo depois, \autoref{fig:rote_oport} (b), $C2$ entra em alcance de comunicação direta com o nó $C3$ e transmite a mensagem para ele. Por fim, $C3$ tem alcance direto com $D$ e, finalmente, envia a mensagem para o seu destino $D$ \cite{Vahdat-2000}.
@@ -274,10 +278,10 @@ Os veículos pertencentes a uma VANET podem se comunicar diretamente entre si, e
 Nas VANETs, os veículos são equipados com três dispositivos distintos (\autoref{fig:vanet_car}). Em primeiro lugar são equipados com uma unidade de comunicação \sigla{OBU}{\textit{On-Board Unit}}, que permite a comunicação V2V e V2I. Segundo, um conjunto de sensores (\textit{sensors}) para mensurar o seu próprio estado (e.g., consumo de combustível) e o ambiente (e.g., estrada escorregadia). Esses dados sensoriais podem ser compartilhados com outros veículos de modo a aumentar a consciência na rodovia e assim melhorar a segurança no trânsito. Por fim, um \sigla{TPM}{\textit{Trusted Platform Module}}, dispositivo que oferece armazenamento e computação confiável para os outros dispositivos \cite{Fuentes-2011}.
 
 \begin{figure}[!htbp]
-	\centering
-	\caption{\label{fig:vanet_car}VANET - modelo simplificado}
-	\includegraphics[width=14cm]{img/vanet-car.jpeg}
-	\legend{Fonte: \cite{Fuentes-2011}}
+    \centering
+    \caption{\label{fig:vanet_car}VANET - modelo simplificado}
+    \includegraphics[width=14cm]{img/vanet-car.jpeg}
+    \legend{Fonte: \cite{Fuentes-2011}}
 \end{figure}
 
 Os fabricantes (\textit{Manufacturers}) são considerados dentro do modelo VANET, por identificarem exclusivamente cada veículo. A autoridade legal (\textit{Legal Authority}) é relacionada a duas tarefas principais, registro de veículos e relatórios de multas. Já os \sigla{TTPs}{\textit{Trusted Third Parties}} oferecem diversos serviços como gerenciamento de credenciais e \textit{timestamping}. Os fabricantes e as autoridades legais estão relacionados com os TTPs por eventualmente precisarem de seus serviços (e.g., para a emissão de credenciais eletrônicas). Os prestadores de serviços (\textit{Service Providers}) oferecem serviços que podem ser acessados através da rede (e.g., serviços baseados em localização) \cite{Fuentes-2011}.
@@ -300,19 +304,19 @@ Em 1999, a FCC (\textit{Federal Communications Commission}), com um dos primeiro
 O DSRC foi projetado em um sistema multicanal, com espectro de frequência dividido em sete canais (\autoref{fig:canais_dsrc}). Cada canal tem a largura de banda de 10 MHz, seis deles são definidos como \sigla{SCH}{\textit{Service Channel}} e um como \sigla{CCH}{\textit{Control Channel}}. A faixa de banda 5,850-5,855 GHz é reservada (\textit{guard frequency}). O canal de Controle é utilizado para mensagens de segurança, enquanto os Canais de Serviços são utilizados para aplicações e servições \textit{non-safety} \cite{sattari-2012,li-2012}.
 
 \begin{figure}[!htbp]
-	\centering
-	\caption{\label{fig:canais_dsrc} Alocação de espectro para aplicações DSRC}
-	\includegraphics[width=15cm]{img/canais-dsrc2.jpeg}
-	\legend{Adapatado de: \cite{Alves-2009}}
+    \centering
+    \caption{\label{fig:canais_dsrc} Alocação de espectro para aplicações DSRC}
+    \includegraphics[width=15cm]{img/canais-dsrc2.jpeg}
+    \legend{Adapatado de: \cite{Alves-2009}}
 \end{figure}
 
 Em 2004, o IEEE \footnote{Institute of Electrical and Electronics Engineers}, inciou a padronização da comunicação em VANETs a partir do IEEE 802.11 (Wi-Fi). Esse padrão é conhecido como IEEE 802.11p \sigla{WAVE}{\textit{Wireless Access in the Vehicular Environment}}. Os documentos: \citeauthor{IEEE-Std-802.11,IEEE-Std-802.11p,IEEE-Std-1609.1,IEEE-Std-1609.2,IEEE-Std-1609.3,IEEE-Std-1609.4}, definem a arquitetura WAVE. O IEEE 802.11p em conjunto com o grupo IEEE 1609 são conhecidos como WAVE, que tem o objetivo de facilitar o acesso à rede no ambiente das redes veiculares \cite{kenney-2011,Alves-2009,sattari-2012,Yokoyama-2014}.
 
 \begin{figure}[!htbp]
-	\centering
-	\caption{\label{fig:pilha-dsrc-eua} Arquitetura em camadas para comunicação em DSRC nos Estados Unidos}
-	\includegraphics[width=10cm]{img/pilha-dsrc-eua.jpeg}
-	\legend{Fonte: \cite{kenney-2011}}
+    \centering
+    \caption{\label{fig:pilha-dsrc-eua} Arquitetura em camadas para comunicação em DSRC nos Estados Unidos}
+    \includegraphics[width=10cm]{img/pilha-dsrc-eua.jpeg}
+    \legend{Fonte: \cite{kenney-2011}}
 \end{figure}
 
 Na \autoref{fig:pilha-dsrc-eua} pode ser visualizado a pilha de protocolos para comunicação DSRC, com o padrão de protocolos a serem utilizados nas diversas camadas. Para a camada física \footnote{PHY \textit{Layer} ou \textit{Physical Layer}} e a 
@@ -358,7 +362,9 @@ O padrão de mobilidade dos táxis é mais diversificado do que o dos ônibus, c
 
 A mobilidade dos caminhões é determinada, principalmente, pelo destino da carga e pela preferência de rotas do motorista (e.g., um motorista de caminhão tem que entregar mercadorias em outro estado, assim o destino final é o outro estado, mas ele pode escolher por qual rota seguir, com melhor pista ou com menos pedágios). Para os veículos de passeio ou particulares o padrão de mobilidade é bem diversificado, movendo-se para qualquer lugar que o motorista desejar, assim a mobilidade é determinada em função de onde o motorista deseja ir, seja para casa de um amigo ou para o trabalho. Os veículos de passeio têm algumas rotas com destino e horários pré-definidos (e.g., ir para o trabalho, levar as crianças para escola) e outras esporádicas (e.g., visitar um amigo, ir ao supermercado) \cite{Cunha-2014}.
 
-%\textcolor{red}{Padrões já desenvolvidos Mahajan-2006}
+\textcolor{red}{Padrões já desenvolvidos Mahajan-2006}
+\ideia{Padrões já desenvolvidos Mahajan-2006}
+\duvida{Padrões já desenvolvidos Mahajan-2006}
 
 \subsection{Protocolos de roteamento em VANETs} \label{algo_rot_vanets}
 
@@ -382,10 +388,10 @@ Quando dois nós entram em alcance de comunicação, o nó com menor identificad
 Para evitar conexões redundantes, cada nó mantém um \textit{cache} de nós que teve contato recentemente. A \textit{anti-entropy session} não é reiniciada com nós que foram contatados dentro um período de tempo determinado. O protocolo de roteamento \textit{Epidemic} tem como objetivo maximizar a taxa de entrega de mensagens, minimizando recursos (e.g., memória e largura de banda de rede) consumidos \cite{Vahdat-2000,oliveira-2010}.
 
 \begin{figure}[!htbp]
-	\centering
-	\caption{\label{fig:epidemic} Ilustração da troca de mensagens no algoritmo \emph{Epidemic}}
-	\includegraphics[width=8cm]{img/epidemic.jpeg}
-	\legend{Fonte: \cite{Vahdat-2000}}
+    \centering
+    \caption{\label{fig:epidemic} Ilustração da troca de mensagens no algoritmo \emph{Epidemic}}
+    \includegraphics[width=8cm]{img/epidemic.jpeg}
+    \legend{Fonte: \cite{Vahdat-2000}}
 \end{figure}
 
 Na \autoref{fig:epidemic} pode ser visualizado a troca de mensagens no protocolo de roteamento \textit{Epdemic} do ponto de vista do nó $B$. O nó $A$ entra em contato com nó $B$ e inicia a \textit{anti-entropy session}. No primeiro passo, $A$ transmite seu \textit{summary vector}, SVa para $B$. Em seguida $B$ faz uma operação lógica \textit{AND} entre a negação do seu SVb com SVa que é igual à mensagem que $B$ não ``viu'' ainda presente em $A$. $B$ então solicita essas mensagens para $A$ e por fim $A$ transmite tais mensagens para $B$. Esse processo se repete quando $B$ encontra um novo vizinho.
@@ -491,38 +497,38 @@ A partir do algoritmo adaptado, simulações serão feitas utilizando o \textit{
 Para cumprir os objetivos descritos, o plano de pesquisa foi dividido em atividades. Nas atividades incluem tarefas do programa de mestrado e desenvolvimento do projeto proposto. O cronograma de atividades do projeto pode ser visualizado na \autoref{tab:cronograma}, onde está definida a duração das principais atividades.
 
 \begin{table}[!htbp]
-	\centering
-	\caption{Cromograma do projeto divido em faixas de tempo} \label{tab:cronograma}
-	\begin{tabular}{c|c|c|c|c|c|c|c|c|c|c}
-		\hline 
-		\multirow{2}{*}{Atividade} & \multicolumn{4}{c|}{2014} & \multicolumn{5}{c|}{2015}  & \multicolumn{1}{c}{2016} \\ \cline{2-11} 
-		& 2-6 & 7 & 8-11 & 12 & 1-2 & 3-4 & 5-7 & 8-10 & 11-12 & 1-2\\ \hline 
-		A1 & $\bullet$ & & $\bullet$ & & & $\bullet$ & $\bullet$ & & & \\ \hline
-		A2 & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & & \\ \hline
-		A3 & & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & & & & & \\ \hline
-		A4 & & & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & & & & \\ \hline
-		A5 & & & & $\bullet$ & $\bullet$ & $\bullet$ & & & & \\ \hline
-		A6 & & & & & & $\bullet$ & & & & \\ \hline
-		A7 & & & & & & $\bullet$ & $\bullet$ & & & \\ \hline 
-		A8 & & & & & & & $\bullet$ & $\bullet$ & & \\ \hline
-		A9 & & & & & & & & & $\bullet$ & \\ \hline
-		A10 & & & & & & & & & $\bullet$ & $\bullet$ \\ \hline
-	\end{tabular}
-	%\fonte{Próprio Autor}
+    \centering
+    \caption{Cromograma do projeto divido em faixas de tempo} \label{tab:cronograma}
+    \begin{tabular}{c|c|c|c|c|c|c|c|c|c|c}
+        \hline
+        \multirow{2}{*}{Atividade} & \multicolumn{4}{c|}{2014} & \multicolumn{5}{c|}{2015}  & \multicolumn{1}{c}{2016} \\ \cline{2-11}
+        & 2-6 & 7 & 8-11 & 12 & 1-2 & 3-4 & 5-7 & 8-10 & 11-12 & 1-2\\ \hline
+        A1 & $\bullet$ & & $\bullet$ & & & $\bullet$ & $\bullet$ & & & \\ \hline
+        A2 & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & & \\ \hline
+        A3 & & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & & & & & \\ \hline
+        A4 & & & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & & & & \\ \hline
+        A5 & & & & $\bullet$ & $\bullet$ & $\bullet$ & & & & \\ \hline
+        A6 & & & & & & $\bullet$ & & & & \\ \hline
+        A7 & & & & & & $\bullet$ & $\bullet$ & & & \\ \hline 
+        A8 & & & & & & & $\bullet$ & $\bullet$ & & \\ \hline
+        A9 & & & & & & & & & $\bullet$ & \\ \hline
+        A10 & & & & & & & & & $\bullet$ & $\bullet$ \\ \hline
+    \end{tabular}
+    %\fonte{Próprio Autor}
 \end{table}%
 
 As atividades são descritas abaixo:
 \begin{enumerate}
-	\item[A1.] Assistir disciplinas definidas para o período e participar das reuniões do grupo.
-	\item[A2.] Pesquisa bibliográfica por meio de livros, artigos, anais de congressos e periódicos, como parte do processo contínuo de embasamento teórico.
-	\item[A3.] Escrita da monografia para qualificação.
-	\item[A4.] Estudo de padrões de mobilidade veicular e a classificação dos veículos em categorias.
-	\item[A5.] Estudo de alguns algoritmos de roteamento desenvolvidos para VANETs.
-	\item[A6.] Defesa do Exame Geral de Qualificação.
-	\item[A7.] Adaptação de um dos algoritmos de roteamento desenvolvido para VANETs e configuração do ambiente de simulação, que compreende a instalação e configuração dos simuladores.
-	\item[A8.] Validação dos resultados por meio das simulações e início da escrita da dissertação.
-	\item[A9.] Publicação de resultados, por meio da redação de artigos para eventos e periódicos nacionais e/ou internacionais.
-	\item[A10.] Finalização da dissertação e preparação para defesa.
+    \item[A1.] Assistir disciplinas definidas para o período e participar das reuniões do grupo.
+    \item[A2.] Pesquisa bibliográfica por meio de livros, artigos, anais de congressos e periódicos, como parte do processo contínuo de embasamento teórico.
+    \item[A3.] Escrita da monografia para qualificação.
+    \item[A4.] Estudo de padrões de mobilidade veicular e a classificação dos veículos em categorias.
+    \item[A5.] Estudo de alguns algoritmos de roteamento desenvolvidos para VANETs.
+    \item[A6.] Defesa do Exame Geral de Qualificação.
+    \item[A7.] Adaptação de um dos algoritmos de roteamento desenvolvido para VANETs e configuração do ambiente de simulação, que compreende a instalação e configuração dos simuladores.
+    \item[A8.] Validação dos resultados por meio das simulações e início da escrita da dissertação.
+    \item[A9.] Publicação de resultados, por meio da redação de artigos para eventos e periódicos nacionais e/ou internacionais.
+    \item[A10.] Finalização da dissertação e preparação para defesa.
 \end{enumerate}
 
 %\chapter{Resultados esperados}
@@ -570,7 +576,7 @@ As atividades são descritas abaixo:
 %    \chapter{Documento básico usando a classe \textit{icmc}}
 %    \label{chapter:documento-basico}
 %    \input{tex/appendix/documento-basico}
-%    
+%
 %    \chapter{Configuração do programa JabRef}
 %    \label{chapter:configuracao-jabref}
 %    \input{tex/appendix/configuracao-jabref}
