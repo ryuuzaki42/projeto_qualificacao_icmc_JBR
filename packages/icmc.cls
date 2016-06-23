@@ -487,13 +487,12 @@ Programas de Pós-graduação do Instituto de Ciências Matemáticas e de Comput
 % Permite comandos com @ no nome
 \makeatletter
 
-% Checagem dos dialetos da língua portuguesa (portuges, portuguese, brazilian, brazil)
+% Checagem dos dialetos da língua portuguesa (portuges, portuguese, brazil)
 \newcommand*{\IfLangPortuguese}{%
   % A comando pode ser otimizado, colocando nomes por ordem de frequência de utilização.
   \iflanguage{brazil}\@firstoftwo{%
-  \iflanguage{brazilian}\@firstoftwo{%
   \iflanguage{portuguese}\@firstoftwo{%
-  \iflanguage{portuges}\@firstoftwo\@secondoftwo}}}%
+  \iflanguage{portuges}\@firstoftwo\@secondoftwo}}%
 }
 
 % Comando para definir o título em português
