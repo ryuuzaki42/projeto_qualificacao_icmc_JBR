@@ -14,5 +14,6 @@
 *.nlo
 *.nls
 *.synctex.gz
+*.synctex.gz(busy)
 *.toc
 #
