@@ -12,7 +12,7 @@
 %% version 2005/12/01 or later.
 %%
 %% This work has the LPPL maintenance status `maintained'.
-%% 
+%%
 %% The Current Maintainer of this work is Humberto Lidio Antonelli,
 %% Contact: humbertoantonelli@usp.br
 %%
@@ -491,9 +491,9 @@ Programas de Pós-graduação do Instituto de Ciências Matemáticas e de Comput
 \newcommand*{\IfLangPortuguese}{%
   % A comando pode ser otimizado, colocando nomes por ordem de frequência de utilização.
   \iflanguage{brazil}\@firstoftwo{%
-  \iflanguage{brazilian}\@firstoftwo{%
+  %\iflanguage{brazilian}\@firstoftwo{% %Package babel Error: You haven't defined the language brazilian yet
   \iflanguage{portuguese}\@firstoftwo{%
-  \iflanguage{portuges}\@firstoftwo\@secondoftwo}}}%
+  \iflanguage{portuges}\@firstoftwo\@secondoftwo}} %}%
 }
 
 % Comando para definir o título em português
