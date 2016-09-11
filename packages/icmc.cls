@@ -1,6 +1,6 @@
 %%
-%% Customizações do abnTeX2 (http://abnTeX2.googlecode.com) para o 
-%% Instituto de Ciências Matemáticas e de Computação, Universidade 
+%% Customizações do abnTeX2 (http://abnTeX2.googlecode.com) para o
+%% Instituto de Ciências Matemáticas e de Computação, Universidade
 %% de São Paulo
 %%
 %% This work may be distributed and/or modified under the
@@ -13,15 +13,15 @@
 %%
 %% This work has the LPPL maintenance status `maintained'.
 %% 
-%% The Current Maintainer of this work is Humberto Lidio Antonelli, 
+%% The Current Maintainer of this work is Humberto Lidio Antonelli,
 %% Contact: humbertoantonelli@usp.br
 %%
-%% Further information about abnTeX2 are available on 
+%% Further information about abnTeX2 are available on
 %% http://abntex2.googlecode.com/
 %%
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{packages/icmc}[2016/06/08 v1.2.7 Classe ICMC baseado em abnTeX2 - Teses e Dissertações dos  
+\ProvidesClass{packages/icmc}[2016/06/08 v1.2.7 Classe ICMC baseado em abnTeX2 - Teses e Dissertações dos
 Programas de Pós-graduação do Instituto de Ciências Matemáticas e de Computação]
 \RequirePackage{xifthen}
 
@@ -29,11 +29,11 @@ Programas de Pós-graduação do Instituto de Ciências Matemáticas e de Comput
 % Declaração de opções
 %================================================================================
 % Opções:
-% 	qualificacao:   Formata documento para qualificação
+%   qualificacao:   Formata documento para qualificação
 %   completa:       Formata documento para dissertação/tese
-%	doutorado:      Formata documento para tese de doutorado
-% 	mestrado:       Formata documento para dissertação de mestrado
-% 	pre-defesa:     Formata documento para versão de defesa (utilizado 
+%   doutorado:      Formata documento para tese de doutorado
+%   mestrado:       Formata documento para dissertação de mestrado
+%   pre-defesa:     Formata documento para versão de defesa (utilizado
 %                   apenas para versão completa)
 %   pro-defesa:     Formata documento para versão final (utilizado apenas
 %                   para versão completa)
@@ -71,7 +71,7 @@ Programas de Pós-graduação do Instituto de Ciências Matemáticas e de Comput
 \ExecuteOptions{pos-defesa}
 
 %
-% Repassa demais opções a abntex	
+% Repassa demais opções a abntex
 %
 \DeclareOption*{%
   \PassOptionsToClass{\CurrentOption}{abntex2}%
@@ -83,30 +83,30 @@ Programas de Pós-graduação do Instituto de Ciências Matemáticas e de Comput
 % Herança da classe `abntex2' e inclusão de pacotes e arquivos necessários
 %================================================================================
 \LoadClass[% -- opções da classe memoir --
-	12pt,				% tamanho da fonte
-	openright,			% capítulos começam em pág ímpar
-	                    % (insere página vazia caso preciso)
-	twoside,			% para impressão em verso e anverso. Oposto a oneside
-	a4paper,			% tamanho do papel. 
-	chapter=TITLE		% títulos de capítulos convertidos em letras maiúsculas
-	]{abntex2}
+    12pt,               % tamanho da fonte
+    openright,          % capítulos começam em pág ímpar
+                        % (insere página vazia caso preciso)
+    twoside,            % para impressão em verso e anverso. Oposto a oneside
+    a4paper,            % tamanho do papel.
+    chapter=TITLE       % títulos de capítulos convertidos em letras maiúsculas
+    ]{abntex2}
 
 %================================================================================
-% Pacotes fundamentais 
+% Pacotes fundamentais
 %================================================================================
 \RequirePackage{babel}
 \RequirePackage{morewrites}         % Resolve o erro “No room for a new \write”
-\RequirePackage{cmap}				% Mapear caracteres especiais no PDF
-\RequirePackage{lmodern}			% Usa a fonte Latin Modern.
-\RequirePackage{lastpage}			% Usado pela Ficha catalográfica
-\RequirePackage{indentfirst}		% Indenta o primeiro parágrafo de cada seção.
+\RequirePackage{cmap}               % Mapear caracteres especiais no PDF
+\RequirePackage{lmodern}            % Usa a fonte Latin Modern.
+\RequirePackage{lastpage}           % Usado pela Ficha catalográfica
+\RequirePackage{indentfirst}        % Indenta o primeiro parágrafo de cada seção.
 \RequirePackage{color, xcolor}      % Controle das cores
 \RequirePackage{colortbl}           % Controle das cores das células da tabela
                                     % (utilizado no título)
-\RequirePackage{graphicx}			% Inclusão de gráficos
+\RequirePackage{graphicx}           % Inclusão de gráficos
 \RequirePackage{caption}            % Pacote para definição dos captions
 \RequirePackage{subcaption}         % Pacote para definição dos subcaptions (ambientes de subfigures)
-\RequirePackage{microtype} 		    % para melhorias de justificação
+\RequirePackage{microtype}          % para melhorias de justificação
 \RequirePackage{pdfpages}           % inclusão de arquivos PDF
 \RequirePackage{ifxetex}            % verifica se a compilação ocorre por xetex
 \RequirePackage{ifluatex}           % verifica se a compilação ocorre por luatex
@@ -124,7 +124,7 @@ Programas de Pós-graduação do Instituto de Ciências Matemáticas e de Comput
 \RequirePackage{pgffor}             % Pacote utilizado para gerar as
                                     % palavras-chave da ficha catalográfica
 \RequirePackage{nomencl}            % Pacote para criação da Lista de Siglas
-\RequirePackage[noredefwarn,translate=babel,nonumberlist,style=list,toc]{glossaries}	 % Pacote para gerar o glossário
+\RequirePackage[noredefwarn,translate=babel,nonumberlist,style=list,toc]{glossaries}     % Pacote para gerar o glossário
 \RequirePackage[brazilian,hyperpageref]{backref} % Paginas com as citações na bibl
 \RequirePackage[alf,bibjustif,abnt-last-names=abnt,abnt-etal-text=it,abnt-repeated-title-omit=yes,abnt-emphasize=bf,abnt-etal-cite=3,abnt-etal-list=0]{abntex2cite}   % Citações padrão ABNT
 
@@ -260,8 +260,8 @@ Programas de Pós-graduação do Instituto de Ciências Matemáticas e de Comput
         \newcommand\@icmcSVPG{\@icmcFont{8}\arial}
 
     \else % Configuração da fonte para a compilação por PDFLATEX
-      \RequirePackage[T1]{fontenc}	    	% Selecao de codigos de fonte.
-      \RequirePackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
+      \RequirePackage[T1]{fontenc}          % Selecao de codigos de fonte.
+      \RequirePackage[utf8]{inputenc}       % Codificacao do documento (conversão automática dos acentos)
       \newcommand\@icmcTitulo{\fontsize{18pt}{1em}\selectfont\usefont{T1}{phv}{m}{n}}
       \newcommand\@icmcAutorCapa{\fontsize{13pt}{1em}\selectfont\usefont{T1}{phv}{b}{it}}
       \newcommand\@icmcAutorFolhaRosto{\fontsize{13pt}{1em}\selectfont\usefont{T1}{phv}{b}{n}}
@@ -324,17 +324,17 @@ Programas de Pós-graduação do Instituto de Ciências Matemáticas e de Comput
 % informações do PDF
 \hypersetup{
         unicode=true, % Codificação dos caracteres especiais no Bookmark
-		pdftitle={\@title}, 
-		pdfauthor={\@author},
-    	pdfsubject={\imprimirpreambulo},
-	    pdfcreator={LaTeX with abnTeX2/ICMC-USP},
-		pdfkeywords={\palavraschave}, 
-		colorlinks=true,       		% false: boxed links; true: colored links
-    	linkcolor=blue,          	% color of internal links
-    	citecolor=blue,        		% color of links to bibliography
-    	filecolor=magenta,      	% color of file links
-		urlcolor=blue,
-		bookmarksdepth=4
+        pdftitle={\@title}, 
+        pdfauthor={\@author},
+        pdfsubject={\imprimirpreambulo},
+        pdfcreator={LaTeX with abnTeX2/ICMC-USP},
+        pdfkeywords={\palavraschave},
+        colorlinks=true,           % false: boxed links; true: colored links
+        linkcolor=blue,            % color of internal links
+        citecolor=blue,            % color of links to bibliography
+        filecolor=magenta,         % color of file links
+        urlcolor=blue,
+        bookmarksdepth=4
 }
 
 % alterando o aspecto da cor azul
@@ -458,25 +458,25 @@ Programas de Pós-graduação do Instituto de Ciências Matemáticas e de Comput
     % Usado sem a opção hyperpageref de backref
     \renewcommand{\backrefpagesname}{Citado na(s) p{\'a}gina(s):~}
     \renewcommand*{\backrefalt}[4]{
-    	\ifcase #1 %
-    		Nenhuma cita{\c c}{\~a}o no texto.%
-    	\or
-    		Citado na p{\'a}gina #2.%
-    	\else
-    		Citado #1 vezes nas p{\'a}ginas #2.%
-    	\fi}%
+        \ifcase #1 %
+            Nenhuma cita{\c c}{\~a}o no texto.%
+        \or
+            Citado na p{\'a}gina #2.%
+        \else
+            Citado #1 vezes nas p{\'a}ginas #2.%
+        \fi}%
 }
 \addto\captionsenglish{% ingles
     % Usado sem a opção hyperpageref de backref
     \renewcommand{\backrefpagesname}{Cited on page(s):~}
     \renewcommand*{\backrefalt}[4]{
-    	\ifcase #1 %
-    		No citation.%
-    	\or
-    		Cited on page #2.%
-    	\else
-    		Cited #1 times on pages #2.%
-    	\fi}%
+        \ifcase #1 %
+            No citation.%
+        \or
+            Cited on page #2.%
+        \else
+            Cited #1 times on pages #2.%
+        \fi}%
 }
 % ---
 
@@ -625,7 +625,7 @@ Programas de Pós-graduação do Instituto de Ciências Matemáticas e de Comput
                 \especialidade{Program in Mathematics}
             }
         }{
-% PIPGES ========================================================================     
+% PIPGES ========================================================================
             \ifthenelse{\equal{#1}{PIPGES}}{
                 \addto\captionsbrazil{
                     \universidade{USP/UFSCar}
@@ -714,7 +714,7 @@ Programas de Pós-graduação do Instituto de Ciências Matemáticas e de Comput
         \fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi
     }
 }
-\addto\captionsenglish{% ingles
+\addto\captionsenglish{% inglês
     \renewcommand\Monthname[1][EMPTY]{%
       \ifnum1=#1January\else
       \ifnum2=#1February\else
@@ -922,7 +922,7 @@ Programas de Pós-graduação do Instituto de Ciências Matemáticas e de Comput
    \oldlstlistoflistings%
    \endgroup}
 
-% Cria um ambiente "codigo" estilizando o ambiente "lstlisting" 
+% Cria um ambiente "codigo" estilizando o ambiente "lstlisting"
 \newcounter{countcodigo}
 \setcounter{countcodigo}{1}
 \lstnewenvironment{codigo}[1][]
@@ -959,7 +959,7 @@ Programas de Pós-graduação do Instituto de Ciências Matemáticas e de Comput
 % Comando para definição da dedicatória
 \def\textodedicatoria{\@ifstar\@textodedicatoria\@@textodedicatoria}
 % Inclui texto de um arquivo como dedicatória
-\def\@textodedicatoria#1{\gdef\@dedicatoria{\input{#1}}} % \textodedicatoria*{}{} 
+\def\@textodedicatoria#1{\gdef\@dedicatoria{\input{#1}}} % \textodedicatoria*{}{}
 % Inclui o texto como dedicatória
 \def\@@textodedicatoria#1{\gdef\@dedicatoria{#1}}       % \textodedicatoria{}{}
 
@@ -1005,7 +1005,7 @@ Programas de Pós-graduação do Instituto de Ciências Matemáticas e de Comput
 % Comando para definição da epígafe
 \def\textoepigrafe{\@ifstar\@textoepigrafe\@@textoepigrafe}
 % Inclui texto de um arquivo como epígafe
-\def\@textoepigrafe#1{\gdef\@epigrafe{\input{#1}}}      % \textoepigrafe*{}{} 
+\def\@textoepigrafe#1{\gdef\@epigrafe{\input{#1}}}      % \textoepigrafe*{}{}
 % Inclui o texto como epígafe
 \def\@@textoepigrafe#1{\gdef\@epigrafe{#1}}             % \textoepigrafe{}{}
 
@@ -1013,11 +1013,11 @@ Programas de Pós-graduação do Instituto de Ciências Matemáticas e de Comput
 \newcommand{\insereepigrafe}
 {
   \@ifundefined{@epigrafe}{}{
-	\begin{epigrafe}
+    \begin{epigrafe}
       \vspace*{\fill}
-	  \begin{flushright}
-		\textit{\@epigrafe}
-	 \end{flushright}
+      \begin{flushright}
+        \textit{\@epigrafe}
+     \end{flushright}
     \end{epigrafe}
   }
 }
@@ -1038,7 +1038,7 @@ Programas de Pós-graduação do Instituto de Ciências Matemáticas e de Comput
 \newcommand{\inserelistadesimbolos}
 {
   \@ifundefined{@incluilistadesimbolos}{}{
-	 \pdfbookmark[0]{\listadesimbolosname}{listadesimbolos}
+     \pdfbookmark[0]{\listadesimbolosname}{listadesimbolos}
      \pretextualchapter{\listadesimbolosname}
      {\setlength{\parindent}{0cm}
        \@starttoc{los}
@@ -1072,33 +1072,33 @@ Programas de Pós-graduação do Instituto de Ciências Matemáticas e de Comput
     \expandafter\StrLeft\expandafter{\thetitle}{1}[\firstlettertitle]
 
         \begin{fichacatalografica}
-        	\vspace*{\fill}					% Posição vertical
+            \vspace*{\fill}            % Posição vertical
 
-	% Conteúdo
-	\begin{otherlanguage}{brazil}
-	\begin{tabular}{c|p{1.4cm}p{10.1cm}|}
+    % Conteúdo
+    \begin{otherlanguage}{brazil}
+    \begin{tabular}{c|p{1.4cm}p{10.1cm}|}
 
-	\multicolumn{3}{c}{\sffamily\small Ficha catalográfica elaborada pela Biblioteca Prof. Achille Bassi} \\
-	\multicolumn{3}{c}{\sffamily\small e Seção Técnica de Informática, ICMC/USP,} \\
-	\multicolumn{3}{c}{\sffamily\small com os dados fornecidos pelo(a) autor(a)} \\ \cline{2-3}
-	& & \\
-	& & \\
-	& & {\fontsize{10.3pt}{1em}\selectfont\ttfamily\ABNTautordatabib} \\ 
-	& {\fontsize{10.3pt}{1em}\selectfont\ttfamily \MakeUppercase{\firstletterauthor}\@codigocutter}\MakeLowercase{\firstlettertitle}%
-	& {\fontsize{10.3pt}{1em}\selectfont\ttfamily~~~\imprimirmaintitle\ / \imprimirautor; \MakeLowercase{\imprimirorientadorRotulo} \imprimirorientador \abntex@ifnotempty{\imprimircoorientador}{; \MakeLowercase{\imprimircoorientadorRotulo}~\imprimircoorientador}. -- \imprimirlocal, \@year.} \\ 
-	& & {\fontsize{10.3pt}{1em}\selectfont\ttfamily~~~\pageref{LastPage} p.}\\
-	& &\\
-	& & {\fontsize{10.3pt}{1em}\selectfont\ttfamily~~~\imprimirtipotrabalho~(\tipodocurso~- \imprimirprograma) -- Instituto de Ciências Matemáticas e de Computação, Universidade de São Paulo, \@year.}\\
-	& & \\ 
-	& & {\fontsize{10.3pt}{1em}\selectfont\ttfamily~~~\expandafter\PROCESS\expandafter{\palavraschave}I. \ABNTorientadordatabib, orient.\ II.\ \abntex@ifnotempty{\imprimircoorientador}{%
-	\ABNTcoorientadordatabib, coorient.\ III.\ }Título.} \\
-	& & \\
-	& & \\ \cline{2-3}
-	%& & ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~CDU: 681.3.01:621.39 \\ \cline{2-3}
+    \multicolumn{3}{c}{\sffamily\small Ficha catalográfica elaborada pela Biblioteca Prof. Achille Bassi} \\
+    \multicolumn{3}{c}{\sffamily\small e Seção Técnica de Informática, ICMC/USP,} \\
+    \multicolumn{3}{c}{\sffamily\small com os dados fornecidos pelo(a) autor(a)} \\ \cline{2-3}
+    & & \\
+    & & \\
+    & & {\fontsize{10.3pt}{1em}\selectfont\ttfamily\ABNTautordatabib} \\ 
+    & {\fontsize{10.3pt}{1em}\selectfont\ttfamily \MakeUppercase{\firstletterauthor}\@codigocutter}\MakeLowercase{\firstlettertitle}%
+    & {\fontsize{10.3pt}{1em}\selectfont\ttfamily~~~\imprimirmaintitle\ / \imprimirautor; \MakeLowercase{\imprimirorientadorRotulo} \imprimirorientador \abntex@ifnotempty{\imprimircoorientador}{; \MakeLowercase{\imprimircoorientadorRotulo}~\imprimircoorientador}. -- \imprimirlocal, \@year.} \\ 
+    & & {\fontsize{10.3pt}{1em}\selectfont\ttfamily~~~\pageref{LastPage} p.}\\
+    & &\\
+    & & {\fontsize{10.3pt}{1em}\selectfont\ttfamily~~~\imprimirtipotrabalho~(\tipodocurso~- \imprimirprograma) -- Instituto de Ciências Matemáticas e de Computação, Universidade de São Paulo, \@year.}\\
+    & & \\
+    & & {\fontsize{10.3pt}{1em}\selectfont\ttfamily~~~\expandafter\PROCESS\expandafter{\palavraschave}I. \ABNTorientadordatabib, orient.\ II.\ \abntex@ifnotempty{\imprimircoorientador}{%
+    \ABNTcoorientadordatabib, coorient.\ III.\ }Título.} \\
+    & & \\
+    & & \\ \cline{2-3}
+    %& & ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~CDU: 681.3.01:621.39 \\ \cline{2-3}
 
-	\end{tabular}
-	\end{otherlanguage}
-	\vspace{1.5cm}
+    \end{tabular}
+    \end{otherlanguage}
+    \vspace{1.5cm}
 
         \end{fichacatalografica}
     }{
@@ -1335,7 +1335,7 @@ Programas de Pós-graduação do Instituto de Ciências Matemáticas e de Comput
     % Secao quinquenária (Subsubsubsection) Caixa baixa
     \renewcommand*{\cftparagraphfont}{\normalsize}
 
-  % tamanhos de fontes de chapter e part	
+  % tamanhos de fontes de chapter e part
    \ifthenelse{\equal{\ABNTEXisarticle}{true}}{%
      \setlength\beforechapskip{\baselineskip}
      \renewcommand{\chaptitlefont}{\ABNTEXsectionfont\ABNTEXsectionfontsize}
@@ -1384,7 +1384,7 @@ Programas de Pós-graduação do Instituto de Ciências Matemáticas e de Comput
         {\renewcommand{\arraystretch}{1.5} %  1 is the default, change whatever you need
         \begin{tabular}{|c|}
             \rowcolor{black}\color{white}\normalsize\ABNTEXchapterfont
-              \ifthenelse{\boolean{abntex@apendiceousecao}}{\MakeTextUppercase{\appendixname}}{\MakeTextUppercase{\chaptername}}  \\ 
+              \ifthenelse{\boolean{abntex@apendiceousecao}}{\MakeTextUppercase{\appendixname}}{\MakeTextUppercase{\chaptername}}  \\
             \vspace{-1.5ex}\\ %coloquei para aumentar o espaço entre o título e o número
             \resizebox{!}{1.1cm}{\ABNTEXchapterfont\thechapter}
             \\[2.5ex]
@@ -1394,7 +1394,7 @@ Programas de Pós-graduação do Instituto de Ciências Matemáticas e de Comput
         \vskip -0.6ex\hfill\rule{.8\textwidth}{0.5pt} \\
         \vskip -2.8ex\hfill\rule{.8\textwidth}{2pt}\\
         \vskip 1.5ex
-	}
+    }
 
   }
 
@@ -1435,8 +1435,8 @@ Programas de Pós-graduação do Instituto de Ciências Matemáticas e de Comput
     \ifthenelse{\boolean{opt-fichacatalografica}}{
         % (o * indica que haverá a ficha bibliográfica)
         \imprimirfolhaderosto*{}
-		\inserefichacatalografica
-		\newpage
+        \inserefichacatalografica
+        \newpage
     }{
         \imprimirfolhaderosto{}
     }
@@ -1471,7 +1471,7 @@ Programas de Pós-graduação do Instituto de Ciências Matemáticas e de Comput
     \inserelistadesiglas
     \inserelistadesimbolos
 
-	\pdfbookmark[0]{\contentsname}{toc}
+    \pdfbookmark[0]{\contentsname}{toc}
     \tableofcontents*
     \cleardoublepage
 
