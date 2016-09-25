@@ -463,7 +463,8 @@ Programas de Pós-graduação do Instituto de Ciências Matemáticas e de Comput
         \or
             Citado na p{\'a}gina #2.%
         \else
-            Citado #3 vezes nas p{\'a}ginas #2.%
+            %Citado #3 vezes nas p{\'a}ginas #2.% % Genearte wrong count of citations in \cite of more than one reference
+            Citado #1 vezes nas p{\'a}ginas #2.%
         \fi}%
 }
 \addto\captionsenglish{% ingles
