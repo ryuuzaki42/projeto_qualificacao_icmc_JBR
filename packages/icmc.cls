@@ -421,7 +421,7 @@ Programas de Pós-graduação do Instituto de Ciências Matemáticas e de Comput
 % Pacote para criação do GLOSSÁRIO
 %================================================================================
 % Gera o indíce do Glossário
-\makeglossaries
+%\makeglossaries % Não vou utilizar/fazer glossário
 % Traduz o nome do glossário
 \addto\captionsbrazil{% portugues-brasil
     \renewcommand{\glossaryname}{Gloss\'ario}
