@@ -3,13 +3,13 @@
 % ------------------------------------------------------------------
 % ------------------------------------------------------------------
 % ICMC: Modelo de Trabalho Acadêmico (tese de doutorado, dissertação de
-% mestrado e trabalhos monográficos em geral) em conformidade com 
+% mestrado e trabalhos monográficos em geral) em conformidade com
 % ABNT NBR 14724:2011: Informação e documentação - Trabalhos acadêmicos -
 % Apresentação
 % ------------------------------------------------------------------
 % -----------------------------------------------------------------
 
-% Opções: 
+% Opções:
 %   Qualificação         = qualificacao
 %   Curso                = doutorado/mestrado
 %   Situação do trabalho = pre-defesa/pos-defesa (exceto para qualificação)
@@ -298,8 +298,7 @@ Em 2004, o IEEE \footnote{Institute of Electrical and Electronics Engineers}, in
     \legend{Fonte: \cite{kenney-2011}}
 \end{figure}
 
-Na \autoref{figure:pilha-dsrc-eua} pode ser visualizado a pilha de protocolos para comunicação DSRC, com o padrão de protocolos a serem utilizados nas diversas camadas. Para a camada física \footnote{PHY \textit{Layer} ou \textit{Physical Layer}} e a 
-subcamada MAC \footnote{\textit{MAC Sublayer ou Media Access Control}} o DRSC utiliza o IEEE 802.11p. No meio da pilha do DSRC emprega o conjunto de padrões definidos pelo grupo IEEE 1609 \cite{li-2012,kenney-2011}.
+Na \autoref{figure:pilha-dsrc-eua} pode ser visualizado a pilha de protocolos para comunicação DSRC, com o padrão de protocolos a serem utilizados nas diversas camadas. Para a camada física \footnote{PHY \textit{Layer} ou \textit{Physical Layer}} e a subcamada MAC \footnote{\textit{MAC Sublayer ou Media Access Control}} o DRSC utiliza o IEEE 802.11p. No meio da pilha do DSRC emprega o conjunto de padrões definidos pelo grupo IEEE 1609 \cite{li-2012,kenney-2011}.
 
 O padrão \citeauthor{IEEE-Std-1609.1} especifica serviços e aplicações do gerente de recursos da arquitetura e tem o objetivo de propiciar a interoperabilidade das aplicações WAVE. O padrão \citeauthor{IEEE-Std-1609.2} define o formato das mensagens e o processamento de modo a prover segurança, sendo utilizado para serviços de segurança. O padrão \citeauthor{IEEE-Std-1609.3} define os serviços de rede incluindo o protocolo de mensagens curtas WAVE (\sigla{WSMP}{WAVE \textit{Short Message Protocol}}). O padrão \citeauthor{IEEE-Std-1609.4} define a utilização do Canal de Controle e dos de Serviço \cite{kenney-2011,Alves-2009}.
 
@@ -307,13 +306,13 @@ DSRC suporta alguns dos protocolos de Internet para as camadas de transporte e d
 
 O formato das mensagens foi definido pela SAE \footnote{Society of Automotive Engineers} no padrão SAE J2735 \footnote{SAE J2735 DSRC \textit{Message Set Dictionary}} de modo a apoiar a interoperabilidade entre as aplicações DSRC. O SAE J2735 especifica um conjunto de mensagens, elementos de dados (\textit{data elements}) e quadros de dados (\textit{data frame}) para uso nas aplicações DSRC/WAVE \cite{kenney-2011,li-2012,Yokoyama-2014,grilli-2010}.
 
-O SAE J2735 define 15 tipos de mensagens, a maioria delas têm em seu escopo a identificação do veículo, dados de localização e o \textit{timestamp}. Um exemplo destas mensagens é a \sigla{BSM}{\textit{Basic Safety Message}}, que transmite informações sobre o estado (e.g., velocidade e localização) do veículo para veículos próximos. Um elemento de dado é uma informação obtida por algum sensor presente no veículo (e.g., velocidade) e por conceito é indivisível. O agrupamento de um conjunto de elementos de dados forma um quadro de dados. Aliada a SAE J2735, existe a SAE J2945.1 (SAE J2945.1 DSRC Minimum Performance Requirements), ainda em desenvolvimento, que especifica os requisitos mínimos de desempenho das comunicações DRSC definidas pela SAE J2735 \cite{li-2012,grilli-2010,kenney-2011}. 
+O SAE J2735 define 15 tipos de mensagens, a maioria delas têm em seu escopo a identificação do veículo, dados de localização e o \textit{timestamp}. Um exemplo destas mensagens é a \sigla{BSM}{\textit{Basic Safety Message}}, que transmite informações sobre o estado (e.g., velocidade e localização) do veículo para veículos próximos. Um elemento de dado é uma informação obtida por algum sensor presente no veículo (e.g., velocidade) e por conceito é indivisível. O agrupamento de um conjunto de elementos de dados forma um quadro de dados. Aliada a SAE J2735, existe a SAE J2945.1 (SAE J2945.1 DSRC Minimum Performance Requirements), ainda em desenvolvimento, que especifica os requisitos mínimos de desempenho das comunicações DRSC definidas pela SAE J2735 \cite{li-2012,grilli-2010,kenney-2011}.
 
 \subsection{Beaconing} \label{subsection:beacons}
 
 Um típico quadro de \textit{beacon} (\textit{frame beacon}), em redes sem fio infraestruturadas é um pequeno quadro, transmitido por difusão (\textit{broadcasting}) periodicamente pelo \sigla{AP}{\textit{Access Point}}, por exemplo a cada 100 ms. Os \textit{beacons} informam a presença de um AP para os clientes e carregam parâmetros do sistema, tais como o identificador do AP, o \textit{timestamp}, quanto tempo até o próximo sinal e as configurações de segurança \cite{Kurose-2012,Tanenbaum-2011}.
 
-No cenário de redes sem fio sem infraestrutura (\textit{ad hoc}), não existe uma infraestrutura (AP) que gerencia as conexões, assim os dispositivos se comunicam em pares, assumindo a responsabilidade pela comunicação e também de enviar os \textit{beacons} quando necessário \cite{Kurose-2012}. A estratégia de utilização de \textit{beacons} para comunicação é definida como \textit{beaconing}. No contexto de VANETs, os \textit{beacons} são utilizados para enviar informações de estado (\textit{status}) do veículo (e.g., velocidade, coordenadas geográficas e aceleração). 
+No cenário de redes sem fio sem infraestrutura (\textit{ad hoc}), não existe uma infraestrutura (AP) que gerencia as conexões, assim os dispositivos se comunicam em pares, assumindo a responsabilidade pela comunicação e também de enviar os \textit{beacons} quando necessário \cite{Kurose-2012}. A estratégia de utilização de \textit{beacons} para comunicação é definida como \textit{beaconing}. No contexto de VANETs, os \textit{beacons} são utilizados para enviar informações de estado (\textit{status}) do veículo (e.g., velocidade, coordenadas geográficas e aceleração).
 
 De posse das informações de estado dos veículos próximos, é necessário uma aplicação para gerenciá-las e processá-las, apresentando para o motorista avisos importantes sobre a cinemáticas dos veículos próximos. Com esse sistema o motorista pode prever melhor a cinemática dos outros veículos e assim ter uma maior consciência dos acontecimentos e consequentemente propiciar uma maior segurança no trânsito. Os \textit{beacons} são úteis para protocolos de roteamento, pois possibilita a descoberta de um bom veículo próximo para encaminhar uma determinada mensagem  \cite{noori-2013, Nguyen-2002,Fuentes-2011}.
 
@@ -375,7 +374,7 @@ Para evitar conexões redundantes, cada nó mantém um \textit{cache} de nós qu
 
 Na \autoref{figure:epidemic} pode ser visualizado a troca de mensagens no protocolo de roteamento \textit{Epdemic} do ponto de vista do nó $B$. O nó $A$ entra em contato com nó $B$ e inicia a \textit{anti-entropy session}. No primeiro passo, $A$ transmite seu \textit{summary vector}, SVa para $B$. Em seguida $B$ faz uma operação lógica \textit{AND} entre a negação do seu SVb com SVa que é igual à mensagem que $B$ não ``viu'' ainda presente em $A$. $B$ então solicita essas mensagens para $A$ e por fim $A$ transmite tais mensagens para $B$. Esse processo se repete quando $B$ encontra um novo vizinho.
 
-Como exemplo de protocolo oportunista, temos o \sigla{SKVR}{\textit{Scalable Knowledge-Based Routing}} que utiliza o conhecimento prévio das rotas e horários dos ônibus. Em busca de escalabilidade o SKVR trabalha com dois níveis de hierarquias, o interdomínio (entre rotas de ônibus) e o intradomínio (entre os veículos e uma rota de ônibus). No roteamento intredomínio o algoritmo utiliza o conhecimento prévio das rotas dos ônibus, assim a mensagem é encaminhada para algum veículo que tenha na rota o destino da mensagem ou eventualmente cruze a rota de destino. Em última instância, cópias das mensagens são enviadas para parte dos vizinhos do nó. No encaminhamento intradomínio os nós precisam decidir em que sentido da rota enviar a mensagem. Para isto, uma lista de nós encontrados dentro da rota é armazenada \cite{Alves-2009}. 
+Como exemplo de protocolo oportunista, temos o \sigla{SKVR}{\textit{Scalable Knowledge-Based Routing}} que utiliza o conhecimento prévio das rotas e horários dos ônibus. Em busca de escalabilidade o SKVR trabalha com dois níveis de hierarquias, o interdomínio (entre rotas de ônibus) e o intradomínio (entre os veículos e uma rota de ônibus). No roteamento intredomínio o algoritmo utiliza o conhecimento prévio das rotas dos ônibus, assim a mensagem é encaminhada para algum veículo que tenha na rota o destino da mensagem ou eventualmente cruze a rota de destino. Em última instância, cópias das mensagens são enviadas para parte dos vizinhos do nó. No encaminhamento intradomínio os nós precisam decidir em que sentido da rota enviar a mensagem. Para isto, uma lista de nós encontrados dentro da rota é armazenada \cite{Alves-2009}.
 
 %\textcolor{red}{add + 2 algoritmos SAR e VADD}
 
@@ -488,7 +487,7 @@ Para cumprir os objetivos descritos, o plano de pesquisa foi dividido em ativida
         A4 & & & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & & & & \\ \hline
         A5 & & & & $\bullet$ & $\bullet$ & $\bullet$ & & & & \\ \hline
         A6 & & & & & & $\bullet$ & & & & \\ \hline
-        A7 & & & & & & $\bullet$ & $\bullet$ & & & \\ \hline 
+        A7 & & & & & & $\bullet$ & $\bullet$ & & & \\ \hline
         A8 & & & & & & & $\bullet$ & $\bullet$ & & \\ \hline
         A9 & & & & & & & & & $\bullet$ & \\ \hline
         A10 & & & & & & & & & $\bullet$ & $\bullet$ \\ \hline
@@ -517,7 +516,7 @@ As atividades são descritas abaixo:
 %Com base na pesquisa bibliográfica realizada e na visualização da situação do trânsito mundial, acreditamos que este projeto tem relevância na tentativa de melhorar esse cenário. A classificação de veículos poderia facilitar a tarefa de obter o padrão de mobilidade dos veículos e ajudar a decidir se ele é um bom nó condutor para determinada mensagem. Essa classificação também pode ser utilizada para a comunicação entre veículos de determinadas categorias, enviando mensagens úteis exclusivamente para eles. Nesse cenário os veículos só precisam analisar o cabeçalho do pacote para verificar se a mensagem é para ele ou não. Com a implementação da classificação poderá melhorar um pouco a caótica situação do trânsito mundial e salvar vidas.
 
 % Finaliza a parte no bookmark do PDF, para que se inicie o bookmark na raiz
-\bookmarksetup{startatroot}% 
+\bookmarksetup{startatroot}%
 
 \postextual
 
