@@ -117,7 +117,7 @@ Programas de Pós-graduação do Instituto de Ciências Matemáticas e de Comput
                                     % resumos
 \RequirePackage{amsthm, amsfonts, amsmath, amssymb} % Pacote para a definição dos ambientes matemáticos
 \RequirePackage{mathptmx}           % Usando times para equações, opcional
-\RequirePackage{listings}           % Pacote para formatação de diversos 
+\RequirePackage{listings}           % Pacote para formatação de diversos
                                     % códigos fontes
 \RequirePackage{algorithm, algpseudocode}  % Pacote para escrever algoritmos em pseudo-código
 \RequirePackage{pgffor}             % Pacote utilizado para gerar as
@@ -325,7 +325,7 @@ Programas de Pós-graduação do Instituto de Ciências Matemáticas e de Comput
 % informações do PDF
 \hypersetup{
         unicode=true, % Codificação dos caracteres especiais no Bookmark
-        pdftitle={\@title}, 
+        pdftitle={\@title},
         pdfauthor={\@author},
         pdfsubject={\imprimirpreambulo},
         pdfcreator={LaTeX with abnTeX2/ICMC-USP},
@@ -401,10 +401,10 @@ Programas de Pós-graduação do Instituto de Ciências Matemáticas e de Comput
 
 % Configuração do pacote nomencl
 % Tamanho da Label da sigla
-\setlength{\nomlabelwidth}{0.15\hsize} 
+\setlength{\nomlabelwidth}{0.15\hsize}
 % Separa as abreviaturas de suas definições com pontos (....)
 \renewcommand{\nomlabel}[1]{#1 \hfill}
-\setlength{\nomitemsep}{-.05in} 
+\setlength{\nomitemsep}{-.05in}
 % Comando necessário para a criação da lista de abreviaturas
 \makenomenclature
 % Traduz o título da lista de abreviaturas
@@ -413,7 +413,7 @@ Programas de Pós-graduação do Instituto de Ciências Matemáticas e de Comput
 % Comando para criação de abreviaturas e siglas
 \def\sigla{\@ifstar\@sigla\@@sigla}
 % Apenas faz o registro na tabela de siglas
-\def\@sigla#1#2{\nomenclature{#1}{#2}}          % \sigla*{}{} 
+\def\@sigla#1#2{\nomenclature{#1}{#2}}          % \sigla*{}{}
 % Faz o registro na tabela de siglas e insere os dados no corpo do documento
 \def\@@sigla#1#2{#2 (#1)\nomenclature{#1}{#2}}  % \sigla{}{}
 
@@ -905,7 +905,7 @@ Programas de Pós-graduação do Instituto de Ciências Matemáticas e de Comput
 % Formatação de código-fonte
 % ---
 
-% Altera o nome padrão do rótulo 
+% Altera o nome padrão do rótulo
 \renewcommand{\lstlistingname}{\codigoname}
 % Altera o rótulo a ser usando no elemento pré-textual "Lista de códigos"
 \renewcommand{\lstlistlistingname}{\listcodigoname}
@@ -1135,7 +1135,7 @@ Programas de Pós-graduação do Instituto de Ciências Matemáticas e de Comput
     \multicolumn{3}{c}{\sffamily\small com os dados fornecidos pelo(a) autor(a)} \\ \cline{2-3}
     & & \\
     & & \\
-    & & {\fontsize{10.3pt}{1em}\selectfont\ttfamily\ABNTautordatabib} \\ 
+    & & {\fontsize{10.3pt}{1em}\selectfont\ttfamily\ABNTautordatabib} \\
     & {\fontsize{10.3pt}{1em}\selectfont\ttfamily \MakeUppercase{\firstletterauthor}\@codigocutter}\MakeLowercase{\firstlettertitle}%
     & {\fontsize{10.3pt}{1em}\selectfont\ttfamily~~~\imprimirtitulo\ / \imprimirautor; \MakeLowercase{\imprimirorientadorRotulo} \imprimirorientador \abntex@ifnotempty{\imprimircoorientador}{; \MakeLowercase{\imprimircoorientadorRotulo}~\imprimircoorientador}. -- \imprimirlocal, \@year.} \\
     & & {\fontsize{10.3pt}{1em}\selectfont\ttfamily~~~\pageref{LastPage} p.}\\
@@ -1392,7 +1392,7 @@ Programas de Pós-graduação do Instituto de Ciências Matemáticas e de Comput
 %================================================================================
 
 \makechapterstyle{icmc}{%
-  \renewcommand{\chapterheadstart}{} 
+  \renewcommand{\chapterheadstart}{}
 
     % Secao secundaria (Section) Caixa baixa, Negrito
     \renewcommand*{\cftsectionfont}{\bfseries}
@@ -1442,7 +1442,7 @@ Programas de Pós-graduação do Instituto de Ciências Matemáticas e de Comput
 
     \ifthenelse{\boolean{abntex@innonumchapter}}{
         \vskip 0ex \hrulefill\chaptitlefont\bfseries\ABNTEXchapterupperifneeded{##1}
-        \vskip -0.6ex\hfill\rule{.8\textwidth}{0.5pt} 
+        \vskip -0.6ex\hfill\rule{.8\textwidth}{0.5pt}
         \vskip -2.8ex\hfill\rule{.8\textwidth}{2pt}
         \vskip 1.5ex
 
