@@ -1,3 +1,3 @@
 #!/bin/bash
 cd ..
-makeindex dissertacao_Joao_Batista.nlo -s nomencl.ist -o dissertacao_Joao_Batista.nls
+makeindex dissert_JB.nlo -s nomencl.ist -o dissert_JB.nls
