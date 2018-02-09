@@ -157,6 +157,7 @@ FUNCTION {abnt.doi.expand.to.url} {#0} %expands a doi address to its url corresp
 FUNCTION {abnt.doi.link}          {#1} %links doi to its url correspondent
 FUNCTION {abnt.doi.leave.as.is}   {#2} %shows doi as is, external viewer will have
                                        %to know what to do with a "doi:" document
+
 %values for url types
 FUNCTION {unknown.url} {#0}
 FUNCTION {http.url}    {#1}
@@ -171,6 +172,7 @@ FUNCTION {init.state.consts}
   #2 'after.sentence :=
   #3 'after.block :=
 }
+
 
 %output.nonnull decides what is written before the argument s, if a comma, period etc.
 FUNCTION {output.nonnull}
@@ -308,6 +310,7 @@ FUNCTION {tie.or.space.prefix} %if text length less than 3 chars. uses a tie
 
 FUNCTION {no.space} { { "" } swap$ }
 
+
 FUNCTION {space.word} { " " swap$ * " " * }
 
 FUNCTION {bbl.and}
@@ -363,6 +366,7 @@ FUNCTION {bbl.url.available}
 { iso.abbreviation {"Available from Internet: "} {"Available: "} if$}
 FUNCTION {bbl.void} {""}
 FUNCTION {bbl.volume} { iso.abbreviation {"vol."} {"v."} if$ }
+
 
 MACRO {jan} {"Jan."}
 MACRO {feb} {"Feb."}
@@ -534,6 +538,7 @@ FUNCTION {recompose.name}
    swap$ get.von #1 "{ ff}" format.name$ *
    }
 
+
 FUNCTION {format.single.name}
 {
 s nameptr get.person 'r :=
@@ -641,6 +646,7 @@ author format.names.plain
 
 FUNCTION {get.bbl.editor} { editor num.names$ #1 > 'bbl.editors 'bbl.editor if$ }
 
+
 FUNCTION {format.book.pages}
 { pages "pages" bibinfo.check  duplicate$ empty$
     'skip$
@@ -714,6 +720,7 @@ FUNCTION {format.howpublished}
   if$
 }
 
+
 %ABNT styles require that the title acts as an author if
 %typical author fields are absent. In this case the first
 %word is uppercase. Our main problem is to establish what
@@ -748,6 +755,7 @@ FUNCTION {format.title.as.author}
   while$
 s
 }
+
 
 %compares current title with the title of the previous entry
 FUNCTION {compare.title}
@@ -1075,6 +1083,7 @@ FUNCTION {format.conference.info}
   new.sentence
 }
 
+
 FUNCTION {format.chapter.pages}
 { chapter empty$
     'format.pages
@@ -1150,6 +1159,7 @@ FUNCTION {format.type}
     {new.block "" swap$ * }
   if$
 }
+
 
 FUNCTION {format.year}
 {year empty$
@@ -1228,6 +1238,7 @@ FUNCTION {format.author.or.organization}
   compare.authorship
 }
 
+
 FUNCTION {format.editor.or.organization}
 {  editor empty$
     { organization empty$ 'skip$
@@ -1266,6 +1277,7 @@ FUNCTION {format.journal}
   format.reprint
   journal emphasize *
 }
+
 
 %generates the first label in \abntrefinfo to be used with \citeonline
 FUNCTION {format.names.for.label1} %abnt-alf only
