@@ -270,7 +270,10 @@
 % Pacote para criacao do GLOSSARIO
 %================================================================================
 % Gera o indice do Glossario
-\makeglossaries
+%
+% Package glossaries Warning: No \printglossary or \printglossaries found. (Remove \makeglossaries if you don't want any glossaries.) This document will not have a glossary.
+%\makeglossaries
+%
 % Traduz o nome do glossario
 \addto\captionsbrazil{% portugues-brasil
     \renewcommand{\glossaryname}{Gloss\'ario}
